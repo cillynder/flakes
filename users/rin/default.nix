@@ -1,4 +1,5 @@
 { config, modules, pkgs, ... }: {
+  programs.nh.flake = "/home/rin/Projects/flakes";
   programs.zsh.enable = true;
   users.users.rin = {
     isNormalUser = true;

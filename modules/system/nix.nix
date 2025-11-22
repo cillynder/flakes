@@ -23,5 +23,6 @@
     '';
   };
   nixpkgs.config.allowUnfree = true;
+  programs.nh.enable = true;
   system.rebuild.enableNg = true;
 }
