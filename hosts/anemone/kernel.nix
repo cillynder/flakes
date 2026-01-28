@@ -23,14 +23,14 @@
     ];
   };
 
-  swapDevices = [{
-    device = "/persist/swapfile";
-    size = 16 * 1024;
-  }];
-
-  systemd.sleep.extraConfig = ''
-    HibernateMode=shutdown
-  '';
+  # swapDevices = [{
+  #   device = "/persist/swapfile";
+  #   size = 16 * 1024;
+  # }];
+  #
+  # systemd.sleep.extraConfig = ''
+  #   HibernateMode=shutdown
+  # '';
   /*
   services.logind.lidSwitch = "suspend-then-hibernate";
   systemd.sleep.extraConfig = ''
