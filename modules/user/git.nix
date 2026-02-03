@@ -7,7 +7,7 @@
     };
     settings = {
       user.name = "Cilly Leang";
-      user.email = "me@lava.moe";
+      user.email = "mini@cilly.moe";
       core.abbrev = 11;
       safe.directory = "/home/rin/Projects/flakes";
     };
