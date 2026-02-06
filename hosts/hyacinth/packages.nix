@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    jetbrains.idea-community-bin
+    jetbrains.idea
     texliveFull
   ];
 }
