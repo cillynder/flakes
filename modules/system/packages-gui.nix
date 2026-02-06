@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }: {
   config = lib.mkIf config.me.gui {
     environment.systemPackages = with pkgs; [
-     gparted
+      android-tools
+      gparted
       nautilus
     ];
-    programs.adb.enable = true;
     hardware.graphics.extraPackages = with pkgs; [
       intel-vaapi-driver
       libva-vdpau-driver
