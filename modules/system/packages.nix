@@ -2,7 +2,7 @@
   imports = [ ./packages-gui.nix ];
   environment.systemPackages = with pkgs; [
     comma
-    ecryptfs
+    # ecryptfs
     efibootmgr
     fd
     git
