@@ -55,7 +55,7 @@ in {
     screenkey
     slurp
     swaybg
-    (tetrio-desktop.override { withTetrioPlus = true; })
+    tetrio-desktop
     texliveFull
     tor-browser
     transmission-remote-gtk
