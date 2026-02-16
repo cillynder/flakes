@@ -3,6 +3,7 @@ builtins.map (path: import path) [
   ./cascadia-code.nix
   ./ccache.nix
   ./eww.nix
+  ./jetbrains.nix
   ./material-icons.nix
   ./steam.nix
   ./utillinux.nix
