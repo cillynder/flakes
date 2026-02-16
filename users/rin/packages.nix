@@ -37,6 +37,7 @@ in {
     gamescope
     gimp3
     grim
+    jetbrains.gateway
     #kotatogram-desktop
     krita
     lm_sensors
