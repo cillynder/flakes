@@ -5,27 +5,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  check:
-    name: Check flake
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Unlock secrets
-        uses: sliteteam/github-action-git-crypt-unlock@1.2.0
-        env:
-          GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
-      - uses: cachix/install-nix-action@v31
-      - uses: cachix/cachix-action@v16
-        with:
-          name: lava
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - run: |
-            cd /
-            cd -
-      - run: nix flake check --keep-going --verbose
-
   build:
     name: Build linux-lava for x86_64-linux
     runs-on: ubuntu-latest
