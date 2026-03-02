@@ -3,6 +3,7 @@
     #nameservers = [ "8.8.8.8" "8.8.4.4" ];
 
     #wg-quick.interfaces.wg0.configFile = "/persist/vpn.conf";
+    wireless.enableHardening = false;
 
     networkmanager = {
       enable = true;
