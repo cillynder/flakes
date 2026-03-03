@@ -1,10 +1,8 @@
 { config, inputs, pkgs, ... }:
 let
   dotnet-combined = (with pkgs.dotnetCorePackages; combinePackages [
-      dotnet_8.sdk
-      dotnet_9.sdk
-      aspnetcore_8_0-bin
-      aspnetcore_9_0-bin
+      dotnet_10.sdk
+      aspnetcore_10_0-bin
   ]);
 in {
   programs.firefox = {
