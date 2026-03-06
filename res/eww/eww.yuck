@@ -43,6 +43,8 @@
   `nmcli -f IN-USE,SIGNAL device wifi | grep '*' | tr -d -c 0-9`)
 (defpoll bluetooth_device :interval "1s" :run-while bt-enabled
   `bluetoothctl devices Connected | grep Device | cut -d" " -f3-`)
+(defpoll bluetooth_device_count :interval "1s" :run-while bt-enabled
+  `bluetoothctl devices Connected | wc -l`)
 
 (deflisten lnetwork :initial "" :run-while wifi-enabled "./scripts/network.sh")
 (deflisten ltitle :initial "" "./scripts/title.sh")
@@ -99,7 +101,7 @@
       (revealer :transition "slideleft"
                 :reveal {bluetooth-extended && bluetooth_device != ""}
                 :duration 150
-        (label :text bluetooth_device
+        (label :text { bluetooth_device_count == "1" ? bluetooth_device : (bluetooth_device_count + " devices") }
                :class "base")))))
 
 (defwidget network []
