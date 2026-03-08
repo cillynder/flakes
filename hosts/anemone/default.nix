@@ -54,4 +54,6 @@
 
   services.fprintd.enable = true;
   services.tlp.enable = true;
+
+  programs.kdeconnect.enable = true;
 }
