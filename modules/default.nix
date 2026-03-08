@@ -35,6 +35,7 @@ in {
     ./system/bluetooth.nix
     ./system/ccache.nix
     ./system/corectrl.nix
+    ./system/docker.nix
     ./system/flatpak.nix
     ./system/greetd.nix
     ./system/gui.nix

@@ -17,6 +17,7 @@
     bluetooth
     ccache
     corectrl
+    docker
     flatpak
     greetd
     gui
