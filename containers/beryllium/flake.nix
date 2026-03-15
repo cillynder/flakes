@@ -17,6 +17,13 @@
         internalInterfaces = [ "ve-+" ];
       };
 
+      services.nginx.virtualHosts."beryllium.lava.moe" = {
+        useACMEHost = "lava.moe";
+        forceSSL = true;
+        locations."/".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
+        listenAddresses = [ "10.0.0.1" "[fd0d::1]" ];
+      };
+
       systemd.tmpfiles.rules = [ "d /persist/containers/${name} 755 root users" ];
       containers.${name} = {
         autoStart = true;
