@@ -76,7 +76,6 @@
     {
       nixosConfigurations."anemone" = mkSystem nixpkgs "anemone" "x86_64-linux" [];
       nixosConfigurations."dandelion" = mkSystem nixpkgs "dandelion" "aarch64-linux" [];
-      nixosConfigurations."hazel" = mkSystem nixpkgs "hazel" "x86_64-linux" [];
       nixosConfigurations."hyacinth" = mkSystem nixpkgs "hyacinth" "x86_64-linux" [];
 
       packages."x86_64-linux" =
