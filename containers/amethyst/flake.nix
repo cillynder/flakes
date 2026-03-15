@@ -20,7 +20,7 @@
       services.nginx.virtualHosts."amethyst.local.lava.moe" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
-        locations."/".proxyPass = "http://10.30.${subnet}.2:9091";
+        locations."/".proxyPass = "http://[fd0d:1::${subnet}:2]:9091";
         listenAddresses = [ "10.0.0.1" "[fd0d::1]" ];
       };
 
