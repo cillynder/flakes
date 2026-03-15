@@ -26,7 +26,6 @@
         locations."/_matrix".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
         locations."/_conduwuit".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
         locations."/_continuwuity".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
-        listenAddresses = [ "10.0.0.1" "[fd0d::1]" ];
       };
 
       services.nginx.virtualHosts."lava.moe" = {
