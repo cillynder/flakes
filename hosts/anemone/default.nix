@@ -30,6 +30,8 @@
     snapper
     wireguard
 
+    inputs.c-citrine.nixosModule
+
     ./filesystem.nix
     ./kernel.nix
     ./networking.nix

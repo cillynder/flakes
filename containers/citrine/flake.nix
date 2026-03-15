@@ -1,10 +1,17 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    catppuccin.url = "github:catppuccin/nix";
   };
-  outputs = { nixpkgs, ... }: {
+  outputs = { nixpkgs, catppuccin, ... }:
+  let
+    modules = [
+      ./configuration.nix
+      catppuccin.nixosModules.catppuccin
+    ];
+  in {
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
-      modules = [ ./configuration.nix ];
+      inherit modules;
     };
     nixosModule = { ... }:
     let
@@ -26,7 +33,7 @@
         # privateUsers = "pick";
         nixpkgs = nixpkgs;
         ephemeral = true;
-        config = { imports = [ ./configuration.nix ]; };
+        config = { imports = modules; };
 
         bindMounts."persist" = {
           hostPath = "/persist/containers/${name}";

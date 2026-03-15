@@ -3,17 +3,17 @@
     <script>window.location.href = "/explore/repos";</script>
 {{end}}
 <div role="main" aria-label="{{if .IsSigned}}{{ctx.Locale.Tr "dashboard"}}{{else}}{{ctx.Locale.Tr "home"}}{{end}}" class="page-content home">
-	<div class="tw-mb-8 tw-px-8">
-		<div class="center">
-			<img class="logo" width="220" height="220" src="{{AssetUrlPrefix}}/img/logo.svg" alt="{{ctx.Locale.Tr "logo"}}">
-			<div class="hero">
-				<h1 class="ui icon header title">
-					{{AppDisplayName}}
-				</h1>
-				<h2>{{ctx.Locale.Tr "startpage.app_desc"}}</h2>
-			</div>
-		</div>
-	</div>
-	{{template "home_forgejo" .}}
+    <div class="tw-mb-8 tw-px-8">
+        <div class="center">
+            <img class="logo" width="220" height="220" src="{{AssetUrlPrefix}}/img/logo.svg" alt="{{ctx.Locale.Tr "logo"}}">
+            <div class="hero">
+                <h1 class="ui icon header title">
+                    {{AppDisplayName}}
+                </h1>
+                <h2>{{ctx.Locale.Tr "startpage.app_desc"}}</h2>
+            </div>
+        </div>
+    </div>
+    {{template "home_forgejo" .}}
 </div>
 {{template "base/footer" .}}
