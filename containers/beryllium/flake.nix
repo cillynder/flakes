@@ -20,9 +20,7 @@
       services.nginx.virtualHosts."beryllium.lava.moe" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
-        # locations."/".extraConfig = "return 302 'https://lava.moe'";
-        locations."/".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
-        # locations."/_matrix".proxyPass = "http://[::1]:8008";
+        locations."/".extraConfig = "return 302 'https://lava.moe'";
         locations."/_matrix".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
         locations."/_conduwuit".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
         locations."/_continuwuity".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
