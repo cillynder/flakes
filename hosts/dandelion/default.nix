@@ -10,7 +10,7 @@
 
   imports = with modules.system; [
     (modulesPath + "/profiles/qemu-guest.nix")
-    home-manager-stable
+    home-manager
 
     base
     kernel

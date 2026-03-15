@@ -41,7 +41,6 @@ in {
     ./system/greetd.nix
     ./system/gui.nix
     ./system/home-manager.nix
-    ./system/home-manager-stable.nix
     ./system/input.nix
     ./system/kernel.nix
     ./system/nix.nix
