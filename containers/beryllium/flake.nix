@@ -20,8 +20,34 @@
       services.nginx.virtualHosts."beryllium.lava.moe" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
+        # locations."/".extraConfig = "return 302 'https://lava.moe'";
         locations."/".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
+        # locations."/_matrix".proxyPass = "http://[::1]:8008";
+        locations."/_matrix".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
+        locations."/_conduwuit".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
+        locations."/_continuwuity".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
         listenAddresses = [ "10.0.0.1" "[fd0d::1]" ];
+      };
+
+      services.nginx.virtualHosts."lava.moe" = {
+        locations."= /.well-known/matrix/server".extraConfig =
+          let
+            server = { "m.server" = "beryllium.lava.moe:443"; };
+          in ''
+            add_header Content-Type application/json;
+            return 200 '${builtins.toJSON server}';
+          '';
+        locations."= /.well-known/matrix/client".extraConfig =
+          let
+            client = {
+              "m.homeserver" = { "base_url" = "https://beryllium.lava.moe"; };
+              # "m.identity_server" = { "base_url" = "https://vector.im"; };
+            };
+          in ''
+            add_header Content-Type application/json;
+            add_header Access-Control-Allow-Origin *;
+            return 200 '${builtins.toJSON client}';
+          '';
       };
 
       systemd.tmpfiles.rules = [ "d /persist/containers/${name} 755 root users" ];
