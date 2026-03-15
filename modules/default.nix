@@ -54,6 +54,7 @@ in {
   ];
   user = mkAttrsFromPaths [
     ./user/catppuccin.nix
+    ./user/comma.nix
     ./user/direnv.nix
     ./user/dunst.nix
     ./user/eww.nix

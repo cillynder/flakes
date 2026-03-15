@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   imports = [ ./packages-gui.nix ];
   environment.systemPackages = with pkgs; [
-    comma
     # ecryptfs
     efibootmgr
     fd

@@ -21,6 +21,7 @@
       sessionVariables
 
       catppuccin
+      comma
       direnv
       git
       gpg

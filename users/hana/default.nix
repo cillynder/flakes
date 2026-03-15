@@ -21,6 +21,7 @@
     };
 
     imports = with modules.user; [
+      comma
       direnv
       git
       neovim-minimal
