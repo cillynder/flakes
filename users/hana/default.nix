@@ -1,4 +1,5 @@
 { config, lib, modules, pkgs, ... }: {
+  programs.nh.flake = "/persist/hana/flakes";
   programs.zsh.enable = true;
   users.users.hana = {
     isNormalUser = true;
