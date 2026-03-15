@@ -11,12 +11,6 @@
       name = "citrine";
       subnet = "3";
     in {
-      # networking.nat = {
-      #   enable = true;
-      #   enableIPv6 = true;
-      #   internalInterfaces = [ "ve-${name}" ];
-      # };
-
       services.nginx.virtualHosts."garden.lava.moe" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
@@ -27,8 +21,6 @@
       containers.${name} = {
         autoStart = true;
         privateNetwork = true;
-        hostAddress = "10.30.${subnet}.1";
-        localAddress = "10.30.${subnet}.2";
         hostAddress6 = "fd0d:1::${subnet}:1";
         localAddress6 = "fd0d:1::${subnet}:2";
         # privateUsers = "pick";
