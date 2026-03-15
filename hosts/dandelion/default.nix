@@ -26,6 +26,7 @@
 
     inputs.c-amethyst.nixosModule
     inputs.c-beryllium.nixosModule
+    inputs.c-citrine.nixosModule
 
     ./filesystem.nix
     ./kernel.nix
