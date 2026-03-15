@@ -14,10 +14,10 @@
       networking.nat = {
         enable = true;
         enableIPv6 = true;
-        internalInterfaces = [ "ve-+" ];
+        internalInterfaces = [ "ve-${name}" ];
       };
 
-      services.nginx.virtualHosts."amethyst.local.lava.moe" = {
+      services.nginx.virtualHosts."${name}.local.lava.moe" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".proxyPass = "http://[fd0d:1::${subnet}:2]:9091";

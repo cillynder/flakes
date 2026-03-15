@@ -14,10 +14,10 @@
       networking.nat = {
         enable = true;
         enableIPv6 = true;
-        internalInterfaces = [ "ve-+" ];
+        internalInterfaces = [ "ve-${name}" ];
       };
 
-      services.nginx.virtualHosts."beryllium.lava.moe" = {
+      services.nginx.virtualHosts."${name}.lava.moe" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".extraConfig = "return 302 'https://lava.moe';";
