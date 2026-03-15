@@ -4,10 +4,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-25.05";
-    home-manager-stable.url = "github:nix-community/home-manager/release-25.05";
-    home-manager-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
-
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
@@ -44,7 +40,7 @@
     c-beryllium.url = "path:./containers/beryllium";
   };
 
-  outputs = { self, agenix, catppuccin, nixpkgs, nixpkgs-stable, ... } @ inputs:
+  outputs = { self, agenix, catppuccin, nixpkgs, ... } @ inputs:
     let
       overlays = (import ./overlays)
         ++ [(final: prev: {
@@ -79,8 +75,8 @@
     in
     {
       nixosConfigurations."anemone" = mkSystem nixpkgs "anemone" "x86_64-linux" [];
-      nixosConfigurations."dandelion" = mkSystem nixpkgs-stable "dandelion" "aarch64-linux" [];
-      nixosConfigurations."hazel" = mkSystem nixpkgs-stable "hazel" "x86_64-linux" [];
+      nixosConfigurations."dandelion" = mkSystem nixpkgs "dandelion" "aarch64-linux" [];
+      nixosConfigurations."hazel" = mkSystem nixpkgs "hazel" "x86_64-linux" [];
       nixosConfigurations."hyacinth" = mkSystem nixpkgs "hyacinth" "x86_64-linux" [];
 
       packages."x86_64-linux" =
