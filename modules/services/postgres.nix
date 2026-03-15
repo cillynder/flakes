@@ -8,6 +8,7 @@ in {
   services.postgresql = {
     enable = true;
     dataDir = dir;
+    # TODO: broken :3
     package = pkgs.postgresql_13;
     authentication = lib.mkOverride 10 ''
       #type  database  DBuser  origin-address      auth-method
