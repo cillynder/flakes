@@ -7,6 +7,10 @@ let
     grep '^0\.0\.0\.0' "${inputs.stevenblack-hosts}/hosts" | awk '{print "local-zone: \""$2"\" always_refuse"}' | tail -n +2 >> "$out"
   '';
 in {
+  networking.firewall.interfaces."ve-+" = {
+    allowedUDPPorts = [ 53 853 ];
+    allowedTCPPorts = [ 53 853 ];
+  };
   networking.firewall.interfaces.wg0 = {
     allowedUDPPorts = [ 53 853 ];
     allowedTCPPorts = [ 53 853 ];
