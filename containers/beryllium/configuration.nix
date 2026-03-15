@@ -8,6 +8,7 @@
   networking.firewall.allowedTCPPorts = [ 6167 ];
   networking.firewall.allowedUDPPorts = [ 6167 ];
   # TODO: this should be generically set
+  networking.useHostResolvConf = false;
   networking.nameservers = [ "fd0d:1::2:1" ];
 
   services.matrix-continuwuity = {
