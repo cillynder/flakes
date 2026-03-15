@@ -1,4 +1,4 @@
-{ modules, modulesPath, ... }: {
+{ inputs, modules, modulesPath, ... }: {
   networking.hostName = "dandelion";
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
@@ -24,10 +24,12 @@
     modules.services.unbound
     modules.services.website
 
+    inputs.c-amethyst.nixosModule
+    inputs.c-beryllium.nixosModule
+
     ./filesystem.nix
     ./kernel.nix
     ./networking.nix
-    ./transmission-container.nix
 
     ../../users/hana
   ];
