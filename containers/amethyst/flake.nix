@@ -17,6 +17,11 @@
         internalInterfaces = [ "ve-+" ];
       };
 
+      services.nginx.virtualHosts."amethyst.local.lava.moe" = {
+        locations."/".proxyPass = "http://10.30.${subnet}.2:9091";
+        listenAddresses = [ "10.0.0.0/24" "fd0d::/16" ];
+      };
+
       systemd.tmpfiles.rules = [ "d /persist/containers/${name} 755 root users" ];
       containers.${name} = {
         autoStart = true;
