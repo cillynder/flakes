@@ -19,6 +19,7 @@
     security
     wireguard
 
+    modules.services.banksia
     modules.services.nginx
     modules.services.postgres
     modules.services.unbound

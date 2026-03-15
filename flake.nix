@@ -22,8 +22,9 @@
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # services
+    pastel.url = "github:cillynder/pastel";
     stevenblack-hosts = { url = "github:StevenBlack/hosts"; flake = false; };
-    website = { url = "github:LavaDesu/lavadesu.github.io/master"; flake = false; };
+    website = { url = "github:cillynder/lavadesu.github.io/master"; flake = false; };
 
     # zsh plugins
     zsh-abbr = { url = "git+https://github.com/olets/zsh-abbr?submodules=1"; flake = false; };

@@ -16,6 +16,7 @@ let
 in {
   options = ./options.nix;
   services = mkAttrsFromPaths [
+    ./services/banksia.nix
     ./services/jellyfin.nix
     ./services/nginx.nix
     ./services/postgres.nix

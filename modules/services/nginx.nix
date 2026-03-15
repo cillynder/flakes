@@ -2,17 +2,20 @@
   networking.firewall.allowedTCPPorts = [ 80 443 ];
   security.acme = {
     acceptTerms = true;
-    defaults.email = "me@lava.moe";
-    certs."lava.moe" = {
+    defaults = {
+      email = "me@lava.moe";
       group = "nginx";
-      domain = "lava.moe";
+      dnsProvider = "cloudflare";
+      credentialsFile = config.age.secrets."acme_dns".path;
+    };
+    certs."lava.moe" = {
       extraDomainNames = [
         "*.lava.moe"
         "*.local.lava.moe"
       ];
-      dnsProvider = "cloudflare";
-      credentialsFile = config.age.secrets."acme_dns".path;
     };
+    certs."cilly.moe" = {};
+    certs."cilly.dev" = {};
   };
 
   services.nginx = {

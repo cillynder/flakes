@@ -1,5 +1,17 @@
-{ inputs, ... }: {
+{ inputs, pkgs, ... }: let
+  pastel = inputs.pastel.packages.${pkgs.system}.default;
+in {
   services.nginx.virtualHosts = {
+    "cilly.moe" = {
+      useACMEHost = "cilly.moe";
+      forceSSL = true;
+      root = pastel.outPath;
+    };
+    "cilly.dev" = {
+      useACMEHost = "cilly.dev";
+      forceSSL = true;
+      root = pastel.outPath;
+    };
     "lava.moe" = {
       useACMEHost = "lava.moe";
       forceSSL = true;
