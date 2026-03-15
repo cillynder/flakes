@@ -40,6 +40,7 @@
     # containers
     c-amethyst.url = "path:./containers/amethyst";
     c-beryllium.url = "path:./containers/beryllium";
+    c-citrine.url = "path:./containers/citrine";
   };
 
   outputs = { self, agenix, catppuccin, nixpkgs, ... } @ inputs:

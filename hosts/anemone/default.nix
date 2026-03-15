@@ -37,6 +37,8 @@
     ../../users/rin
 
     modules.services.syncthing
+
+    inputs.c-citrine.nixosModule
   ];
 
   me = {
