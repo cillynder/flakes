@@ -57,6 +57,20 @@
       },
       "parent": []
     },
+    "c-beryllium": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "path": "./containers/beryllium",
+        "type": "path"
+      },
+      "original": {
+        "path": "./containers/beryllium",
+        "type": "path"
+      },
+      "parent": []
+    },
     "catppuccin": {
       "inputs": {
         "catppuccin-v1_1": "catppuccin-v1_1",
@@ -429,7 +443,7 @@
     "nix-gaming": {
       "inputs": {
         "flake-parts": "flake-parts_2",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1770778188,
@@ -542,6 +556,22 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1773282481,
+        "narHash": "sha256-b/GV2ysM8mKHhinse2wz+uP37epUrSE+sAKXy/xvBY4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fe416aaedd397cacb33a610b33d60ff2b431b127",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
         "lastModified": 1770537093,
         "narHash": "sha256-pF1quXG5wsgtyuPOHcLfYg/ft/QMr8NnX0i6tW2187s=",
         "owner": "NixOS",
@@ -556,7 +586,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1770562336,
         "narHash": "sha256-ub1gpAONMFsT/GU2hV6ZWJjur8rJ6kKxdm9IlCT0j84=",
@@ -632,6 +662,7 @@
         "aagl": "aagl",
         "agenix": "agenix",
         "c-amethyst": "c-amethyst",
+        "c-beryllium": "c-beryllium",
         "catppuccin": "catppuccin",
         "catppuccin-palette": "catppuccin-palette",
         "fast-syntax-highlighting": "fast-syntax-highlighting",
@@ -640,7 +671,7 @@
         "linux-tkg": "linux-tkg",
         "neovim-nightly": "neovim-nightly",
         "nix-gaming": "nix-gaming",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_6",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "nvim-treesitter": "nvim-treesitter",
         "pure": "pure",

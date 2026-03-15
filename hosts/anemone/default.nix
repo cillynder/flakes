@@ -39,6 +39,7 @@
     modules.services.syncthing
 
     inputs.c-amethyst.nixosModule
+    inputs.c-beryllium.nixosModule
   ];
 
   me = {
