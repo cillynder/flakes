@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }: {
   nix = {
+    package = pkgs.nixVersions.latest;
+
     settings = rec {
       substituters = [
         "https://cache.nixos.org?priority=10"
