@@ -5,6 +5,8 @@
     fsType = "none";
     options = [ "bind" ];
   };
+  networking.firewall.allowedTCPPorts = [ 6167 ];
+  networking.firewall.allowedUDPPorts = [ 6167 ];
 
   services.matrix-continuwuity = {
     enable = true;
