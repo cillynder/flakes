@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   system.stateVersion = "25.11";
   networking.firewall.allowedTCPPorts = [ 3000 ];
   networking.firewall.allowedUDPPorts = [ 3000 ];
@@ -16,4 +16,6 @@
     };
     stateDir = "/persist/forgejo";
   };
+
+  environment.systemPackages = [ config.services.forgejo.package ];
 }
