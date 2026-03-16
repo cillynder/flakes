@@ -18,6 +18,12 @@
       name = "citrine";
       subnet = "3";
     in {
+      networking.nat = {
+        enable = true;
+        enableIPv6 = true;
+        internalInterfaces = [ "ve-${name}" ];
+      };
+
       services.nginx.virtualHosts."garden.lava.moe" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
