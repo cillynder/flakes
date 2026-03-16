@@ -7,9 +7,14 @@
   let
     name = "citrine";
     subnetId = "3";
+
     subnet = x: "fd0d:1::${subnetId}:${toString x}";
     host = subnet 1;
     client = subnet 2;
+
+    subnet4 = x: "10.30.${subnetId}.${toString x}";
+    host4 = subnet4 1;
+    client4 = subnet4 2;
 
     modules = [
       ./configuration.nix
@@ -40,6 +45,8 @@
       containers.${name} = {
         autoStart = true;
         privateNetwork = true;
+        hostAddress = host4;
+        localAddress = client4;
         hostAddress6 = host;
         localAddress6 = client;
         # privateUsers = "pick";
