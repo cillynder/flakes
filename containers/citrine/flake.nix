@@ -7,7 +7,7 @@
   let
     name = "citrine";
     subnetId = "3";
-    subnet = x: "fd0d:1::${subnetId}:${x}";
+    subnet = x: "fd0d:1::${subnetId}:${toString x}";
     host = subnet 1;
     client = subnet 2;
 
