@@ -5,19 +5,25 @@
   };
   outputs = { nixpkgs, catppuccin, ... }:
   let
+    name = "citrine";
+    subnetId = "3";
+    subnet = x: "fd0d:1::${subnetId}:${x}";
+    host = subnet 1;
+    client = subnet 2;
+
     modules = [
       ./configuration.nix
       catppuccin.nixosModules.catppuccin
+      {
+        networking.useHostResolvConf = false;
+        networking.nameservers = [ host ];
+      }
     ];
   in {
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
       inherit modules;
     };
-    nixosModule = { ... }:
-    let
-      name = "citrine";
-      subnet = "3";
-    in {
+    nixosModule = { ... }: {
       networking.nat = {
         enable = true;
         enableIPv6 = true;
@@ -27,15 +33,15 @@
       services.nginx.virtualHosts."garden.lava.moe" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
-        locations."/".proxyPass = "http://[fd0d:1::${subnet}:2]:3000";
+        locations."/".proxyPass = "http://[${client}]:3000";
       };
 
       systemd.tmpfiles.rules = [ "d /persist/containers/${name} 755 root users" ];
       containers.${name} = {
         autoStart = true;
         privateNetwork = true;
-        hostAddress6 = "fd0d:1::${subnet}:1";
-        localAddress6 = "fd0d:1::${subnet}:2";
+        hostAddress6 = host;
+        localAddress6 = client;
         # privateUsers = "pick";
         nixpkgs = nixpkgs;
         ephemeral = true;
