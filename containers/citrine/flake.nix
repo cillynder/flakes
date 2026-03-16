@@ -18,16 +18,6 @@
       name = "citrine";
       subnet = "3";
     in {
-      # TODO: this is likely dandelion specific
-      networking.firewall.extraCommands = ''
-        ip6tables -t nat -A PREROUTING -d fd0d::1:1003 -p tcp --dport 22 -j DNAT --to-destination fd0d:1::${subnet}:2
-        ip6tables -t nat -A POSTROUTING -d fd0d:1::${subnet}:2 -p tcp --dport 22 -j SNAT --to-source fd0d::1:1003
-      '';
-      networking.firewall.extraStopCommands = ''
-        ip6tables -t nat -D PREROUTING -d fd0d::1:1003 -p tcp --dport 22 -j DNAT --to-destination fd0d:1::${subnet}:2 || true
-        ip6tables -t nat -D POSTROUTING -d fd0d:1::${subnet}:2 -p tcp --dport 22 -j SNAT --to-source fd0d::1:1003 || true
-      '';
-
       services.nginx.virtualHosts."garden.lava.moe" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
