@@ -1,7 +1,6 @@
 { fqdn, shareFqdn, ... }: {
   system.stateVersion = "25.11";
   systemd.tmpfiles.rules = [
-    "d /persist/music 755 navidrome navidrome"
     "d /persist/navidrome 755 navidrome navidrome"
   ];
   networking.firewall.allowedTCPPorts = [ 4533 ];
@@ -17,7 +16,7 @@
       ShareURL = "https://${shareFqdn}";
       EnableSharing = true;
       DataFolder = "/persist/navidrome";
-      MusicFolder = "/persist/music";
+      MusicFolder = "/binds/music";
     };
   };
 }

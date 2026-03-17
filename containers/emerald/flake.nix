@@ -67,6 +67,11 @@
           mountPoint = "/persist";
           isReadOnly = false;
         };
+        bindMounts."music" = {
+          hostPath = "/persist/media/music";
+          mountPoint = "/binds/music";
+          isReadOnly = true;
+        };
         bindMounts."navidrome_env" = {
           hostPath = config.age.secrets.navidrome_env.path;
           mountPoint = "/binds/navidrome_env";
