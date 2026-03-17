@@ -6,6 +6,7 @@
   outputs = { nixpkgs, catppuccin, ... }:
   let
     name = "citrine";
+    fqdn = "garden.lava.moe";
     subnetId = "3";
 
     subnet = x: "fd0d:1::${subnetId}:${toString x}";
@@ -35,7 +36,7 @@
         internalInterfaces = [ "ve-${name}" ];
       };
 
-      services.nginx.virtualHosts."garden.lava.moe" = {
+      services.nginx.virtualHosts."${fqdn}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".proxyPass = "http://[${client}]:3000";
@@ -53,6 +54,7 @@
         nixpkgs = nixpkgs;
         ephemeral = true;
         config = { imports = modules; };
+        specialArgs = { inherit fqdn; };
 
         bindMounts."persist" = {
           hostPath = "/persist/containers/${name}";

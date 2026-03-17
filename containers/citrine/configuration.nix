@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, fqdn, lib, ... }: {
   system.stateVersion = "25.11";
   networking.firewall.allowedTCPPorts = [ 22 3000 ];
   networking.firewall.allowedUDPPorts = [ 22 3000 ];
@@ -13,8 +13,8 @@
     settings = {
       DEFAULT.APP_NAME = "Garden";
       server = {
-        DOMAIN = "garden.lava.moe";
-        ROOT_URL = "https://garden.lava.moe/";
+        DOMAIN = fqdn;
+        ROOT_URL = "https://${fqdn}/";
         HTTP_PORT = 3000;
         START_SSH_SERVER = true;
         BUILTIN_SSH_SERVER_USER = "git";

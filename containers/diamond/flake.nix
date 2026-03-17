@@ -5,6 +5,7 @@
   outputs = { nixpkgs, ... }:
   let
     name = "diamond";
+    fqdn = "astransia.lava.moe";
     subnetId = "4";
 
     subnet = x: "fd0d:1::${subnetId}:${toString x}";
@@ -19,7 +20,7 @@
       inherit modules;
     };
     nixosModule = { ... }: {
-      services.nginx.virtualHosts."diamond.local.lava.moe" = {
+      services.nginx.virtualHosts."${fqdn}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".proxyPass = "http://[${client}]:8000";
@@ -35,6 +36,7 @@
         nixpkgs = nixpkgs;
         ephemeral = true;
         config = { imports = modules; };
+        specialArgs = { inherit fqdn; };
 
         bindMounts."persist" = {
           hostPath = "/persist/containers/${name}";

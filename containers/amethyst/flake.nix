@@ -9,6 +9,7 @@
     nixosModule = { ... }:
     let
       name = "amethyst";
+      fqdn = "amethyst.lava.moe";
       subnet = "1";
     in {
       networking.nat = {
@@ -17,7 +18,7 @@
         internalInterfaces = [ "ve-${name}" ];
       };
 
-      services.nginx.virtualHosts."${name}.local.lava.moe" = {
+      services.nginx.virtualHosts."${fqdn}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".proxyPass = "http://[fd0d:1::${subnet}:2]:9091";
