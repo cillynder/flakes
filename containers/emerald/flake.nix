@@ -30,6 +30,7 @@
       services.nginx.virtualHosts."${shareFqdn}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
+        locations."/".return = "404";
         locations."/share/".proxyPass = "http://[${client}]:4533";
       };
 
