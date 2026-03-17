@@ -31,7 +31,10 @@
         listenAddresses = [ "10.0.0.1" "[fd0d::1]" ];
       };
 
-      systemd.tmpfiles.rules = [ "d /persist/containers/${name} 755 root users" ];
+      systemd.tmpfiles.rules = [
+        "d /persist/containers/${name} 755 root users"
+        "d /persist/media/music 075 nobody users"
+      ];
       containers.${name} = {
         autoStart = true;
         privateNetwork = true;
