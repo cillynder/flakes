@@ -13,6 +13,10 @@
     host = subnet 1;
     client = subnet 2;
 
+    subnet4 = x: "10.30.${subnetId}.${toString x}";
+    host4 = subnet4 1;
+    client4 = subnet4 2;
+
     modules = [
       ./configuration.nix
     ];
@@ -21,6 +25,12 @@
       inherit modules;
     };
     nixosModule = { ... }: {
+      networking.nat = {
+        enable = true;
+        enableIPv6 = true;
+        internalInterfaces = [ "ve-${name}" ];
+      };
+
       services.nginx.virtualHosts."${fqdn}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
@@ -38,6 +48,8 @@
       containers.${name} = {
         autoStart = true;
         privateNetwork = true;
+        hostAddress = host4;
+        localAddress = client4;
         hostAddress6 = host;
         localAddress6 = client;
         # privateUsers = "pick";
