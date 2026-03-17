@@ -28,6 +28,7 @@
     inputs.c-beryllium.nixosModule
     inputs.c-citrine.nixosModule
     inputs.c-diamond.nixosModule
+    inputs.c-emerald.nixosModule
 
     ./filesystem.nix
     ./kernel.nix
