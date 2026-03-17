@@ -33,6 +33,7 @@
         enableIPv6 = true;
         internalInterfaces = [ "ve-${name}" ];
       };
+      networking.firewall.allowedTCPPorts = [ 50300 ];
 
       services.nginx.virtualHosts."${fqdn}" = {
         useACMEHost = "lava.moe";
@@ -57,6 +58,14 @@
         ephemeral = true;
         config = { imports = modules; };
         specialArgs = { inherit fqdn; };
+
+        forwardPorts = [
+          {
+            containerPort = 50300;
+            hostPort = 50300;
+            protocol = "tcp";
+          }
+        ];
 
         bindMounts."persist" = {
           hostPath = "/persist/containers/${name}";
