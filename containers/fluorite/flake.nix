@@ -18,6 +18,10 @@
 
     modules = [
       ./configuration.nix
+      {
+        networking.useHostResolvConf = false;
+        networking.nameservers = [ host ];
+      }
     ];
   in {
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
