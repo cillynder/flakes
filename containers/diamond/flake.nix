@@ -24,6 +24,7 @@
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".proxyPass = "http://[${client}]:8000";
+        listenAddresses = [ "10.0.0.1" "[fd0d::1]" ];
       };
 
       systemd.tmpfiles.rules = [ "d /persist/containers/${name} 755 root users" ];
