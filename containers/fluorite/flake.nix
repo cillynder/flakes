@@ -24,6 +24,12 @@
       inherit modules;
     };
     nixosModule = { config, ... }: {
+      networking.nat = {
+        enable = true;
+        enableIPv6 = true;
+        internalInterfaces = [ "ve-${name}" ];
+      };
+
       services.nginx.virtualHosts."${fqdn}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
