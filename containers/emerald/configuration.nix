@@ -13,7 +13,7 @@
       Port = 4533;
       Address = "[::]";
       BaseUrl = "https://${fqdn}/";
-      ShareURL = shareFqdn;
+      ShareURL = "https://${shareFqdn}";
       EnableSharing = true;
       DataFolder = "/persist/navidrome";
       MusicFolder = "/persist/music";
