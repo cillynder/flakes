@@ -9,6 +9,7 @@
     nixosModule = { ... }:
     let
       name = "beryllium";
+      fqdn = "beryllium.lava.moe";
       subnet = "2";
     in {
       networking.nat = {
@@ -17,7 +18,7 @@
         internalInterfaces = [ "ve-${name}" ];
       };
 
-      services.nginx.virtualHosts."${name}.lava.moe" = {
+      services.nginx.virtualHosts."${fqdn}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".extraConfig = "return 302 'https://lava.moe';";
@@ -29,7 +30,7 @@
       services.nginx.virtualHosts."lava.moe" = {
         locations."= /.well-known/matrix/server".extraConfig =
           let
-            server = { "m.server" = "beryllium.lava.moe:443"; };
+            server = { "m.server" = "${fqdn}:443"; };
           in ''
             add_header Content-Type application/json;
             return 200 '${builtins.toJSON server}';
@@ -37,7 +38,7 @@
         locations."= /.well-known/matrix/client".extraConfig =
           let
             client = {
-              "m.homeserver" = { "base_url" = "https://beryllium.lava.moe"; };
+              "m.homeserver" = { "base_url" = "https://${fqdn}"; };
               # "m.identity_server" = { "base_url" = "https://vector.im"; };
             };
           in ''
@@ -51,8 +52,6 @@
       containers.${name} = {
         autoStart = true;
         privateNetwork = true;
-        hostAddress = "10.30.${subnet}.1";
-        localAddress = "10.30.${subnet}.2";
         hostAddress6 = "fd0d:1::${subnet}:1";
         localAddress6 = "fd0d:1::${subnet}:2";
         # privateUsers = "pick";

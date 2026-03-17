@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ fqdn, ... }: {
   system.stateVersion = "25.11";
   systemd.tmpfiles.rules = [
     "d /persist/vaultwarden 755 vaultwarden vaultwarden"
@@ -13,6 +13,6 @@
 
   services.vaultwarden = {
     enable = true;
-    domain = "diamond.local.lava.moe";
+    domain = fqdn;
   };
 }
