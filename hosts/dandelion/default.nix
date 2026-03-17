@@ -6,6 +6,7 @@
   age.secrets = {
     acme_dns.file = ../../secrets/acme_dns.age;
     navidrome_env.file = ../../secrets/navidrome_env.age;
+    slskd_env.file = ../../secrets/slskd_env.age;
     wg_dandelion.file = ../../secrets/wg_dandelion.age;
   };
 
@@ -30,6 +31,7 @@
     inputs.c-citrine.nixosModule
     inputs.c-diamond.nixosModule
     inputs.c-emerald.nixosModule
+    inputs.c-fluorite.nixosModule
 
     ./filesystem.nix
     ./kernel.nix
