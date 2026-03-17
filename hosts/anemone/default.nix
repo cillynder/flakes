@@ -5,6 +5,7 @@
 
   nixpkgs.overlays = [ inputs.neovim-nightly.overlays.default ];
   age.secrets = {
+    slskd_env.file = ../../secrets/slskd_env.age;
     wg_anemone.file = ../../secrets/wg_anemone.age;
     passwd.file = ../../secrets/passwd.age;
   };

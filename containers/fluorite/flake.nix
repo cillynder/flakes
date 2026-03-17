@@ -23,7 +23,7 @@
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
       inherit modules;
     };
-    nixosModule = { ... }: {
+    nixosModule = { config, ... }: {
       services.nginx.virtualHosts."${fqdn}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
@@ -53,6 +53,11 @@
         bindMounts."shared" = {
           hostPath = "/persist/media/music";
           mountPoint = "/binds/shared";
+          isReadOnly = true;
+        };
+        bindMounts."slskd_env" = {
+          hostPath = config.age.secrets.slskd_env.path;
+          mountPoint = "/binds/slskd_env";
           isReadOnly = true;
         };
         # flake = "path:" + ./.;

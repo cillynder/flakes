@@ -9,6 +9,7 @@
   services.slskd = {
     enable = true;
     domain = null;
+    environmentFile = "/binds/slskd_env";
     settings = {
       directories.downloads = "/persist/slskd/Downloads";
       shares.downloads = "/binds/shared/";
