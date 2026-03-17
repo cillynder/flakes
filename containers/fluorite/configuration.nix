@@ -8,6 +8,7 @@
 
   services.slskd = {
     enable = true;
+    domain = null;
     settings = {
       directories.downloads = "/persist/slskd/Downloads";
       shares.downloads = "/binds/shared/";
