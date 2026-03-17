@@ -5,6 +5,7 @@
 
   age.secrets = {
     acme_dns.file = ../../secrets/acme_dns.age;
+    navidrome_env.file = ../../secrets/navidrome_env.age;
     wg_dandelion.file = ../../secrets/wg_dandelion.age;
   };
 

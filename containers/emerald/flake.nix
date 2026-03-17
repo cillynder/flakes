@@ -24,7 +24,7 @@
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
       inherit modules;
     };
-    nixosModule = { ... }: {
+    nixosModule = { config, ... }: {
       networking.nat = {
         enable = true;
         enableIPv6 = true;
@@ -62,6 +62,11 @@
           hostPath = "/persist/containers/${name}";
           mountPoint = "/persist";
           isReadOnly = false;
+        };
+        bindMounts."navidrome_env" = {
+          hostPath = config.age.secrets.navidrome_env.path;
+          mountPoint = "/binds/navidrome_env";
+          isReadOnly = true;
         };
         # flake = "path:" + ./.;
       };

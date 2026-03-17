@@ -9,6 +9,7 @@
 
   services.navidrome = {
     enable = true;
+    environmentFile = "/binds/navidrome_env";
     settings = {
       Port = 4533;
       Address = "[::]";
