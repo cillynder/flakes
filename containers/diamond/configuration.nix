@@ -14,5 +14,9 @@
   services.vaultwarden = {
     enable = true;
     domain = fqdn;
+    config = {
+      DOMAIN = "https://${fqdn}";
+      ROCKET_ADDRESS = "::";
+    };
   };
 }
