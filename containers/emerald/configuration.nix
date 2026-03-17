@@ -14,6 +14,7 @@
       Address = "[::]";
       BaseUrl = "https://${fqdn}/";
       ShareURL = shareFqdn;
+      EnableSharing = true;
       DataFolder = "/persist/navidrome";
       MusicFolder = "/persist/music";
     };
