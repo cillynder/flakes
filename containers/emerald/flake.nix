@@ -6,7 +6,7 @@
   let
     name = "emerald";
     fqdn = "navia.lava.moe";
-    shareFqdn = "share.navia.lava.moe";
+    shareFqdn = "muse.lava.moe";
     subnetId = "5";
 
     subnet = x: "fd0d:1::${subnetId}:${toString x}";
