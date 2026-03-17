@@ -30,7 +30,7 @@
       services.nginx.virtualHosts."${shareFqdn}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
-        locations."/".proxyPass = "http://[${client}]:4533";
+        locations."/share/".proxyPass = "http://[${client}]:4533";
       };
 
       systemd.tmpfiles.rules = [ "d /persist/containers/${name} 755 root users" ];
