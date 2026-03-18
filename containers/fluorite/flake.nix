@@ -72,9 +72,9 @@
           mountPoint = "/persist";
           isReadOnly = false;
         };
-        bindMounts."shared" = {
+        bindMounts."music" = {
           hostPath = "/persist/media/music";
-          mountPoint = "/binds/shared";
+          mountPoint = "/binds/music";
           isReadOnly = true;
         };
         bindMounts."slskd_env" = {

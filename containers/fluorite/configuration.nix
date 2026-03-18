@@ -3,6 +3,11 @@
   systemd.tmpfiles.rules = [
     "d /persist/slskd/Downloads 755 slskd slskd"
   ];
+  fileSystems."/var/lib/slskd" = {
+    device = "/persist/slskd";
+    fsType = "none";
+    options = [ "bind" ];
+  };
   networking.firewall.allowedTCPPorts = [ 5030 50300 ];
   networking.firewall.allowedUDPPorts = [ 5030 50300 ];
 
@@ -11,8 +16,7 @@
     domain = null;
     environmentFile = "/binds/slskd_env";
     settings = {
-      directories.downloads = "/persist/slskd/Downloads";
-      shares.directories = [ "/binds/shared/" ];
+      shares.directories = [ "/binds/music/" ];
     };
   };
 }
