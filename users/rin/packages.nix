@@ -31,6 +31,7 @@ in {
     evince
     eww
     feh
+    feishin
     file-roller
     gamescope
     gimp3
