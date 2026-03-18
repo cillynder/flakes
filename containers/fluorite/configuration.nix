@@ -18,7 +18,7 @@
     settings = {
       shares.directories = [ "/binds/music/" ];
       soulseek.description = "🌸 | sv.sl@lava.moe | slskd";
-      soulseek.picture = "/var/lib/slskd/picture.gif";
+      soulseek.picture = "/var/lib/slskd/picture.png";
     };
   };
 }
