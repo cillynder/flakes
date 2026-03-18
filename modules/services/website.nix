@@ -20,6 +20,13 @@ in {
     "cdn.lava.moe" = {
       useACMEHost = "lava.moe";
       forceSSL = true;
+      extraConfig = ''
+        return 301 https://sh.lava.moe$request_uri;
+      '';
+    };
+    "sh.lava.moe" = {
+      useACMEHost = "lava.moe";
+      forceSSL = true;
       root = "/persist/cdn";
     };
     "_" = {
