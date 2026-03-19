@@ -1,5 +1,5 @@
 -- Keybindings
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 map('n', '<C-H>', '<C-W>h', { noremap = true })
 map('n', '<C-J>', '<C-W>j', { noremap = true })
 map('n', '<C-K>', '<C-W>k', { noremap = true })
@@ -18,6 +18,7 @@ vim.opt.number = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes:3"
 vim.opt.title = true
+vim.opt.termguicolors = true
 vim.opt.updatetime = 0
 vim.opt.clipboard:prepend('unnamedplus')
 
@@ -47,7 +48,7 @@ vim.g.signify_sign_change            = vim.g.signify_sign_add
 vim.g.signify_sign_change_delete     = vim.g.signify_sign_delete
 
 -- Plugins
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter').setup {
     highlight = { enable = true },
     indent = { enable = false }
 }
