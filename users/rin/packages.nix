@@ -49,7 +49,12 @@ in {
     # inputs.nix-gaming.packages.x86_64-linux.wine-osu
     obsidian
     pavucontrol
-    prismlauncher
+    (prismlauncher.override {
+      jdks = [
+        jdk21
+        temurin-bin-25
+      ];
+    })
     qbittorrent
     rivalcfg
     screenkey
