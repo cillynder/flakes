@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  kblight = "light -s sysfs/leds/${config.me.kbBacklightDevice}";
+  kblight = "brightnessctl -d ${config.me.kbBacklightDevice}";
 in
 {
   home.packages = [ config.services.hypridle.package ];
@@ -16,18 +16,18 @@ in
       listener = lib.optionals (config.me.kbBacklightDevice != null) [
         {
           timeout = 120;
-          on-timeout = "${kblight} -O && ${kblight} -S 0";
-          on-resume = "${kblight} -I";
+          on-timeout = "${kblight} -s && ${kblight} 0";
+          on-resume = "${kblight} -r";
         }
       ] ++ [
         {
           timeout = 150;
-          on-timeout = "light -O && light -T 0.5";
-          on-resume = "light -I";
+          on-timeout = "brightnessctl -s && brightnessctl 50%-";
+          on-resume = "brightnessctl -r";
         }
         {
           timeout = 180;
-          on-timeout = "light -I && loginctl lock-session";
+          on-timeout = "brightnessctl -r && loginctl lock-session";
         }
         {
           timeout = 195;

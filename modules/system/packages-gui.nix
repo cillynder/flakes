@@ -10,7 +10,6 @@
       libva-vdpau-driver
       libvdpau-va-gl
     ];
-    programs.light.enable = true;
     hardware.opentabletdriver.enable = true;
     hardware.keyboard.qmk.enable = true;
     programs.steam = {
