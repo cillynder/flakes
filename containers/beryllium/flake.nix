@@ -22,9 +22,9 @@
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".extraConfig = "return 302 'https://lava.moe';";
-        locations."/_matrix".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
-        locations."/_conduwuit".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
-        locations."/_continuwuity".proxyPass = "http://[fd0d:1::${subnet}:2]:6167";
+        locations."/_matrix".proxyPass = "http://10.30.${subnet}.2:6167";
+        locations."/_conduwuit".proxyPass = "http://10.30.${subnet}.2:6167";
+        locations."/_continuwuity".proxyPass = "http://10.30.${subnet}.2:6167";
       };
 
       services.nginx.virtualHosts."lava.moe" = {
@@ -52,9 +52,8 @@
       containers.${name} = {
         autoStart = true;
         privateNetwork = true;
-        hostAddress6 = "fd0d:1::${subnet}:1";
-        localAddress6 = "fd0d:1::${subnet}:2";
-        # privateUsers = "pick";
+        hostAddress = "10.30.${subnet}.1";
+        localAddress = "10.30.${subnet}.2";
         nixpkgs = nixpkgs;
         ephemeral = true;
         config = { imports = [ ./configuration.nix ]; };
@@ -64,7 +63,6 @@
           mountPoint = "/persist";
           isReadOnly = false;
         };
-        # flake = "path:" + ./.;
       };
     };
   };

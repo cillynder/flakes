@@ -9,14 +9,15 @@
   networking.firewall.allowedUDPPorts = [ 6167 ];
   # TODO: this should be generically set
   networking.useHostResolvConf = false;
-  networking.nameservers = [ "fd0d:1::2:1" ];
+  networking.nameservers = [ "8.8.8.8" ];
 
   services.matrix-continuwuity = {
     enable = true;
     settings.global = {
       # TODO: link this with outer container's address
-      address = [ "fd0d:1::2:2" ];
+      address = [ "10.30.2.2" ];
       server_name = "lava.moe";
+      rocksdb_recovery_mode = 2;
     };
   };
 }
