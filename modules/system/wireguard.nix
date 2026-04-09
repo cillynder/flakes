@@ -6,7 +6,7 @@ let
   serverIp = gcSecrets.wireguard.gateway;
 
   forwarding = {
-#    "22727" = [ "10.100.0.3" "7777" ];
+    "22727" = [ "10.100.0.3" "7777" ];
   };
 
   mapForwards = type:
@@ -18,6 +18,8 @@ let
       in ''
         ${pkgs.iptables}/bin/iptables -${type} PREROUTING -t nat -i ${serverInterface} -p tcp --dport ${sport} -j DNAT --to ${dest}:${dport}
         ${pkgs.iptables}/bin/iptables -${type} FORWARD -p tcp -d ${dest} --dport ${dport} -j ACCEPT
+        ${pkgs.iptables}/bin/iptables -${type} PREROUTING -t nat -i ${serverInterface} -p udp --dport ${sport} -j DNAT --to ${dest}:${dport}
+        ${pkgs.iptables}/bin/iptables -${type} FORWARD -p udp -d ${dest} --dport ${dport} -j ACCEPT
       '') forwarding
     );
 
