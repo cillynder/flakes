@@ -27,8 +27,12 @@ in {
         forward-addr = [
           "2606:4700:4700::1111@853#cloudflare-dns.com"
           "2606:4700:4700::1001@853#cloudflare-dns.com"
+          "2001:4860:4860::8888@853#dns.google"
+          "2001:4860:4860::8844@853#dns.google"
           "1.1.1.1@853#cloudflare-dns.com"
           "1.0.0.1@853#cloudflare-dns.com"
+          "8.8.8.8@853#dns.google"
+          "8.8.4.4@853#dns.google"
         ];
       }];
 
