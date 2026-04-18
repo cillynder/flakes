@@ -51,6 +51,7 @@ vim.g.signify_sign_change_delete     = vim.g.signify_sign_delete
 
 -- VimTeX
 vim.g.vimtex_view_method = "zathura"
+vim.g.vimtex_quickfix_open_on_warning = 0
 
 -- Theming
 vim.api.nvim_command("syntax enable")
