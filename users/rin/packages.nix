@@ -18,12 +18,11 @@ in {
     nil
     nodejs_latest
     pamixer
+    pnpm
     qmk
     unrar
     weechat
     yt-dlp
-
-    nodePackages_latest.pnpm
   ] ++ lib.optionals config.me.gui [
     android-studio
     brightnessctl

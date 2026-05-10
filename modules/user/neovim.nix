@@ -21,13 +21,13 @@ in {
     extraPackages = with pkgs; [
       rust-analyzer
       texlab
-      nodePackages."@astrojs/language-server"
-      nodePackages."@tailwindcss/language-server"
-      nodePackages.diagnostic-languageserver
-      nodePackages.eslint_d
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
-      nodePackages.yaml-language-server
+      astro-language-server
+      tailwindcss-language-server
+      diagnostic-languageserver
+      eslint_d
+      typescript-language-server
+      vscode-langservers-extracted
+      yaml-language-server
     ];
 
     plugins = with pkgs.vimPlugins; [
