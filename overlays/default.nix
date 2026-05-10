@@ -5,6 +5,7 @@ builtins.map (path: import path) [
   ./eww.nix
   ./jetbrains.nix
   ./material-icons.nix
+  ./openldap.nix
   ./steam.nix
   ./utillinux.nix
   ./wpa-supplicant.nix
