@@ -26,6 +26,7 @@ in {
     };
     "/boot" = mkLabelMount "stem" "vfat";
 
+    "/flower" = mkBtrfsMount "myosotis" "/@" true;
     "/nix" = submount "/@/nix" false;
     "/persist" = (submount "/@/persist" true) // { neededForBoot = true; };
     "/persist/.snapshots" = submount "/snap/persist" false;
