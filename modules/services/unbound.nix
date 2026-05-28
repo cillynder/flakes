@@ -41,8 +41,10 @@ in {
         access-control = [
           "127.0.0.1/8      allow"
           "10.0.0.0/8       allow"
+          "100.64.0.0/10    allow"
           "192.168.100.0/24 allow"
-          "fd0d::/16 allow"
+          "fd0d::/16        allow"
+          "fd7a:115c:a1e0::/48 allow"
           "${gcSecrets.wireguard.ipv6Subnet}:/80 allow"
         ];
         domain-insecure = [ "\"local.lava.moe\"" ];
