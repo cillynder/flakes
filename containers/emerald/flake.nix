@@ -39,7 +39,7 @@
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".proxyPass = "http://[${client}]:4533";
-        listenAddresses = [ "10.0.0.1" "[fd0d::1]" ];
+        listenAddresses = [ "10.0.0.1" "[fd0d::1]" "100.67.1.1" ];
       };
       services.nginx.virtualHosts."${shareFqdn}" = {
         useACMEHost = "lava.moe";
