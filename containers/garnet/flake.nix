@@ -40,9 +40,6 @@
         locations."/" = {
           proxyPass = "http://${client4}:9200";
           proxyWebsockets = true;
-          extraConfig = ''
-            proxy_set_header Host $host;
-          '';
         };
         listenAddresses = [ "100.67.2.1" ];
       };
