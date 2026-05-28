@@ -49,6 +49,7 @@ in {
     ./system/printing.nix
     ./system/security.nix
     ./system/snapper.nix
+    ./system/tailscale.nix
     ./system/virtualisation.nix
     ./system/wireguard.nix
   ];

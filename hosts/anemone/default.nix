@@ -28,6 +28,7 @@
     printing
     security
     snapper
+    tailscale
     wireguard
 
     ./filesystem.nix
