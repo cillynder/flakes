@@ -19,6 +19,7 @@
     nix-stable
     packages
     security
+    tailscale
     wireguard
 
     modules.services.banksia
