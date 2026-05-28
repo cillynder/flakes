@@ -1,4 +1,4 @@
-{ lib, modules, modulesPath, ... }: {
+{ inputs, modules, modulesPath, ... }: {
   networking.hostName = "alyssum";
   system.stateVersion = "25.11";
   time.timeZone = "Australia/Melbourne";
@@ -21,6 +21,8 @@
     packages
     security
     tailscale
+
+    inputs.c-garnet.nixosModule
 
     ./filesystem.nix
     ./kernel.nix
