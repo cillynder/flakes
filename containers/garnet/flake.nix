@@ -41,12 +41,12 @@
           proxyPass = "http://${client4}:9200";
           proxyWebsockets = true;
         };
+        # TODO: hardcoded address
         listenAddresses = [ "100.67.2.1" ];
       };
 
       systemd.tmpfiles.rules = [
         "d /persist/containers/${name} 755 root users"
-        "d /persist/flower 755 root users"
       ];
       containers.${name} = {
         autoStart = true;
@@ -67,7 +67,7 @@
           isReadOnly = false;
         };
         bindMounts."content" = {
-          hostPath = "/persist/flower";
+          hostPath = "/flower/opencloud";
           mountPoint = "/flower";
           isReadOnly = false;
         };

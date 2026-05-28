@@ -1,10 +1,20 @@
 { ... }: {
   system.stateVersion = "25.11";
   fileSystems."/var/lib/opencloud" = {
-    device = "/persist/opencloud";
+    device = "/flower/data";
     fsType = "none";
     options = [ "bind" ];
   };
+  fileSystems."/etc/opencloud" = {
+    device = "/persist/cfg";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+  # TODO: hardcoded address
+  networking.extraHosts = ''
+    100.67.2.1 cloud.lava.moe
+  '';
+
   networking.firewall.allowedTCPPorts = [ 9200 ];
   networking.firewall.allowedUDPPorts = [ 9200 ];
 
