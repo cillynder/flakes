@@ -4,6 +4,7 @@
   time.timeZone = "Australia/Melbourne";
 
   age.secrets = {
+    acme_dns.file = ../../secrets/acme_dns.age;
     wpa_conf = {
       file = ../../secrets/wpa_conf.age;
       path = "/etc/wpa_supplicant/imperative.conf";
@@ -21,6 +22,8 @@
     packages
     security
     tailscale
+
+    modules.services.nginx
 
     inputs.c-garnet.nixosModule
 
