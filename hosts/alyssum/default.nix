@@ -29,7 +29,4 @@
   ];
 
   me.environment = "headless";
-
-  services.openssh.settings.PermitRootLogin = lib.mkForce "yes";
-  services.openssh.settings.PasswordAuthentication = lib.mkForce true;
 }
