@@ -4,7 +4,11 @@
   time.timeZone = "Australia/Melbourne";
 
   age.secrets = {
-    wpa_conf.file = ../../secrets/wpa_conf.age;
+    wpa_conf = {
+      file = ../../secrets/wpa_conf.age;
+      path = "/etc/wpa_supplicant/imperative.conf";
+      symlink = false;
+    };
   };
 
   imports = with modules.system; [

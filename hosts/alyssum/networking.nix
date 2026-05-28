@@ -1,5 +1,4 @@
 { config, ... }: {
-  environment.etc."wpa_supplicant/imperative.conf".source = config.age.secrets.wpa_conf.path;
   networking = {
     useDHCP = true;
     wireless.enable = true;
