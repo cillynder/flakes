@@ -80,6 +80,7 @@
         };
     in
     {
+      nixosConfigurations."alyssum" = mkSystem nixpkgs "alyssum" "x86_64-linux" [];
       nixosConfigurations."anemone" = mkSystem nixpkgs "anemone" "x86_64-linux" [];
       nixosConfigurations."dandelion" = mkSystem nixpkgs "dandelion" "aarch64-linux" [];
       nixosConfigurations."hyacinth" = mkSystem nixpkgs "hyacinth" "x86_64-linux" [];
