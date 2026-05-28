@@ -4,5 +4,6 @@
     enable = true;
     authKeyFile = config.age.secrets.tailscale_auth.path;
     openFirewall = true;
+    useRoutingFeatures = if config.me.environment == "headless" then "both" else "client";
   };
 }
