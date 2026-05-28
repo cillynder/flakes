@@ -1,4 +1,5 @@
 let
+  alyssum = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAp00i2DTwMk9i2WBEwpNTDA51TQJEqzpyCka6znmRzR";
   anemone = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEPFifSAybe97xDP/cq6AAjy7Fm0go0dtQ9ICK6JRUgc";
   blossom = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5wfPCcpkNR3ubr7cBV0UwVCDo/sMmV0aI/JOJTIxQj";
   dandelion = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFUk99ku7+eiIO7Q9sIPlPx3GiUljLv7W404W/zwrtzI";
@@ -7,7 +8,7 @@ let
   rin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPru5eTBvHJ4ZmrrzPRHCGM09wQP/ZHSaKYalDuBVO15";
 in {
   "secrets/passwd.age".publicKeys = [ anemone blossom rin ];
-  "secrets/wpa_conf.age".publicKeys = [ blossom rin ];
+  "secrets/wpa_conf.age".publicKeys = [ alyssum blossom rin ];
 
   "secrets/acme_dns.age".publicKeys = [ dandelion hazel rin ];
   "secrets/navidrome_env.age".publicKeys = [ anemone dandelion rin ];

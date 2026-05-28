@@ -4,7 +4,7 @@
   time.timeZone = "Australia/Melbourne";
 
   age.secrets = {
-    # acme_dns.file = ../../secrets/acme_dns.age;
+    wpa_conf.file = ../../secrets/wpa_conf.age;
   };
 
   imports = with modules.system; [
