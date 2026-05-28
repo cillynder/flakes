@@ -38,7 +38,7 @@
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/" = {
-          proxyPass = "http://[${client}]:9200";
+          proxyPass = "http://${client4}:9200";
           proxyWebsockets = true;
           extraConfig = ''
             proxy_set_header Host $host;
