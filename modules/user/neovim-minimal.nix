@@ -9,6 +9,8 @@
     vimAlias = true;
     vimdiffAlias = true;
     withNodeJs = false;
+    withPython3 = false;
+    withRuby = false;
 
     plugins = with pkgs.vimPlugins; [
       fzf-vim

@@ -17,6 +17,8 @@ in {
     vimdiffAlias = true;
     #package = pkgs.neovim-nightly;
     withNodeJs = true;
+    withPython3 = true;
+    withRuby = false;
 
     extraPackages = with pkgs; [
       rust-analyzer
