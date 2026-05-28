@@ -20,6 +20,7 @@
     nix-stable
     packages
     security
+    tailscale
 
     ./filesystem.nix
     ./kernel.nix
