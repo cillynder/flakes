@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
   networking.firewall =
   let
     iptables = "${pkgs.iptables}/bin/iptables";
@@ -49,9 +49,37 @@
         {
           groups = [ "wheel" ];
           keepEnv = true;
-          persist = true;
+          persist = config.me.environment != "laptop";
         }
       ];
+    };
+    pam = lib.mkIf (config.me.environment != "headless") {
+      u2f = {
+        enable = true;
+        settings = {
+          cue = true;
+          pinverification = 1;
+        };
+      };
+      services.doas.rules.auth = {
+        u2f.settings.pinverification = lib.mkForce 0;
+        u2f_int = lib.mkMerge [
+          {
+            enable = true;
+            order = config.security.pam.services.doas.rules.auth.u2f.order + 1;
+            control = "sufficient";
+            modulePath = "${pkgs.pam_u2f}/lib/security/pam_u2f.so";
+            inherit (config.security.pam.u2f) settings;
+          }
+          {
+            settings = lib.mkForce {
+              interactive = true;
+              pinverification = 0;
+              userpresence = 0;
+            };
+          }
+        ];
+      };
     };
   };
 }
