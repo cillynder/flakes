@@ -1,8 +1,8 @@
 { config, ... }: {
-  environment.etc."wpa_supplicant.conf".source = config.age.secrets.wpa_conf.path;
   networking = {
     useDHCP = true;
     wireless.enable = true;
+    wireless.extraConfigFiles = [ config.age.secrets.wpa_conf.path ];
 
     interfaces.wlp1s0.useDHCP = false;
     interfaces.wlp1s0.ipv4.addresses = [{
