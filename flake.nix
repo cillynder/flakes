@@ -44,6 +44,7 @@
     c-diamond.url = "path:./containers/diamond";
     c-emerald.url = "path:./containers/emerald";
     c-fluorite.url = "path:./containers/fluorite";
+    c-garnet.url = "path:./containers/garnet";
   };
 
   outputs = { self, agenix, catppuccin, nixpkgs, ... } @ inputs:
