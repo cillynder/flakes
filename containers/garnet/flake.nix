@@ -44,7 +44,13 @@
             proxy_set_header Host $host;
           '';
         };
-        listenAddresses = [ "10.0.0.1" "[fd0d::1]" "100.67.1.1" ];
+        extraConfig = ''
+          allow 10.0.0.0/8;
+          allow 100.0.0.0/8;
+          allow 192.168.1.0/24;
+          allow fd0d::/8;
+          deny all;
+        '';
       };
 
       systemd.tmpfiles.rules = [
