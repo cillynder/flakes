@@ -28,6 +28,7 @@
     printing
     security
     snapper
+    tailscale
     wireguard
 
     modules.services.syncthing
