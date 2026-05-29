@@ -24,6 +24,6 @@ in {
   home.packages = with pkgs; [ socat ];
   programs.eww = {
     enable = true;
-    configDir = res;
   };
+  xdg.configFile."eww".source = res;
 }
