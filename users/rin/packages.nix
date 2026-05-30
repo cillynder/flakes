@@ -19,15 +19,28 @@ in {
     nodejs_latest
     pamixer
     pnpm
-    qmk
     unrar
-    weechat
     yt-dlp
+  ] ++ lib.optionals (config.me.environment == "desktop") [
+    krita
+    lutris
+    mangohud
+    (prismlauncher.override {
+      jdks = [
+        jdk21
+        temurin-bin-25
+      ];
+    })
+    inputs.nix-gaming.packages.x86_64-linux.osu-lazer-bin
+    qmk
+    tetrio-desktop
+    tor-browser
+    virt-manager
+    winetricks
   ] ++ lib.optionals config.me.gui [
     android-studio
     brightnessctl
     drawio
-    element-desktop
     evince
     eww
     feh
@@ -36,37 +49,19 @@ in {
     gamescope
     gimp3
     grim
-    jetbrains.gateway
-    #kotatogram-desktop
-    krita
     lm_sensors
-    lutris
-    insomnia
     maim
-    mangohud
     me.psensor
-    inputs.nix-gaming.packages.x86_64-linux.osu-lazer-bin
-    # inputs.nix-gaming.packages.x86_64-linux.wine-osu
     obsidian
     pavucontrol
-    (prismlauncher.override {
-      jdks = [
-        jdk21
-        temurin-bin-25
-      ];
-    })
     qbittorrent
     rivalcfg
     screenkey
     slurp
     swaybg
-    tetrio-desktop
     texliveFull
-    tor-browser
     transmission-remote-gtk
     vesktop
-    virt-manager
-    winetricks
     zathura
     zenity
 
