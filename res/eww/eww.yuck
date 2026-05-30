@@ -1,4 +1,5 @@
 (defwindow mainbar :monitor 0
+
                    :geometry (geometry :x "0%"
                                        :y "0%"
                                        :width "100%"
@@ -39,14 +40,15 @@
   `cat /sys/class/power_supply/_BAT_PATH_/capacity`)
 (defpoll pbat_status :interval "1s" :run-while bat-enabled
   `cat /sys/class/power_supply/_BAT_PATH_/status`)
-(defpoll network_strength :interval "1s" :run-while wifi-enabled
-  `nmcli -f IN-USE,SIGNAL device wifi | grep '*' | tr -d -c 0-9`)
+(defpoll wifi_ssid :interval "1s" :run-while wifi-enabled
+  `iwctl station wlan0 show | grep "Connected network" | awk '{print $3}'`)
+(defpoll wifi_strength :interval "1s" :run-while wifi-enabled
+  `iw dev wlan0 link | awk '/signal/ {gsub("-",""); print $2}'`)
 (defpoll bluetooth_device :interval "1s" :run-while bt-enabled
   `bluetoothctl devices Connected | grep Device | cut -d" " -f3-`)
 (defpoll bluetooth_device_count :interval "1s" :run-while bt-enabled
   `bluetoothctl devices Connected | wc -l`)
 
-(deflisten lnetwork :initial "" :run-while wifi-enabled "./scripts/network.sh")
 (deflisten ltitle :initial "" "./scripts/title.sh")
 (deflisten lworkspaces :initial "[]" "./scripts/workspaces.sh")
 (deflisten lcurrent_workspace :initial "1" "./scripts/active-workspace.sh")
@@ -107,22 +109,22 @@
 (defwidget network []
   (button :onclick `eww update network-extended=${network-extended ? "false" : "true"}`
     (box :orientation "horizontal"
-         :class {"widget pill" + ((network-extended && lnetwork != "Disconnected") ? " extended" : "")}
-         :spacing {(network-extended && lnetwork != "Disconnected") ? 5 : 0}
+         :class {"widget pill" + ((network-extended && wifi_ssid != "") ? " extended" : "")}
+         :spacing {(network-extended && wifi_ssid != "") ? 5 : 0}
          :space-evenly false
       (label :text {
-          (lnetwork == "Disconnected") ? ""
-        : (network_strength == "") ? ""
-        : (network_strength < 20) ? ""
-        : (network_strength < 30) ? ""
-        : (network_strength < 55) ? ""
-        : (network_strength < 80) ? ""
+          (wifi_ssid == "") ? ""
+        : (wifi_strength == "") ? ""
+        : (wifi_strength < 75) ? ""
+        : (wifi_strength < 65) ? ""
+        : (wifi_strength < 60) ? ""
+        : (wifi_strength < 50) ? ""
         : ""}
              :class "base pill-icon")
       (revealer :transition "slideleft"
-                :reveal {network-extended && lnetwork != "Disconnected"}
+                :reveal {network-extended && wifi_ssid != ""}
                 :duration 150
-        (label :text lnetwork
+        (label :text wifi_ssid
                :class "base")))))
 
 (defwidget battery []

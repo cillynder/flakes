@@ -21,7 +21,7 @@ let
     '';
   };
 in {
-  home.packages = with pkgs; [ socat ];
+  home.packages = with pkgs; [ iw socat ];
   programs.eww = {
     enable = true;
   };
