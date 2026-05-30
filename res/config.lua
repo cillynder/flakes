@@ -108,18 +108,18 @@ require('lualine').setup {
 -- many thanks to @kristijanhusak
 -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1167#issuecomment-920824125
 function _G.javascript_indent()
-  local line = vim.fn.getline(vim.v.lnum)
-  local prev_line = vim.fn.getline(vim.v.lnum - 1)
-  if line:match('^%s*[%*/]%s*') then
-    if prev_line:match('^%s*%*%s*') then
-      return vim.fn.indent(vim.v.lnum - 1)
+    local line = vim.fn.getline(vim.v.lnum)
+    local prev_line = vim.fn.getline(vim.v.lnum - 1)
+    if line:match('^%s*[%*/]%s*') then
+        if prev_line:match('^%s*%*%s*') then
+            return vim.fn.indent(vim.v.lnum - 1)
+        end
+        if prev_line:match('^%s*/%*%*%s*$') then
+            return vim.fn.indent(vim.v.lnum - 1) + 1
+        end
     end
-    if prev_line:match('^%s*/%*%*%s*$') then
-      return vim.fn.indent(vim.v.lnum - 1) + 1
-    end
-  end
 
-  return vim.fn['GetJavascriptIndent']()
+    return vim.fn['GetJavascriptIndent']()
 end
 
 vim.cmd('au FileType javascript setlocal indentexpr=v:lua.javascript_indent()')
@@ -157,18 +157,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        focusable = false,
-        virtual_text = false,
-        underline = true,
-        signs = true,
-        update_in_insert = true
-    }
-)
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-    vim.lsp.handlers.signature_help, { focusable = false }
-)
+vim.diagnostic.config({
+    focusable = false,
+    virtual_text = false,
+    underline = true,
+    signs = true,
+    update_in_insert = true
+})
 
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
