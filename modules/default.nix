@@ -14,6 +14,7 @@ let
     }) paths
   );
 in {
+  binds = ./binds.nix;
   options = ./options.nix;
   services = mkAttrsFromPaths [
     ./services/banksia.nix

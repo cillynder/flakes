@@ -44,5 +44,10 @@ in {
       type = types.bool;
       default = false;
     };
+
+    binds = lib.mkOption {
+      type = with lib.types; attrsOf str;
+      default = {};
+    };
   };
 }

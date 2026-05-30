@@ -1,5 +1,5 @@
 { config, inputs, modules, ... }: {
-  imports = [ modules.options ];
+  imports = [ modules.binds modules.options ];
 
   environment.etc = {
     "machine-id".source = "/persist/machine-id";
