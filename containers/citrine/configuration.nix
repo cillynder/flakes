@@ -11,7 +11,7 @@
     enable = true;
     lfs.enable = true;
     settings = {
-      DEFAULT.APP_NAME = "Garden";
+      DEFAULT.APP_NAME = "cilly's botanical laboratory";
       server = {
         DOMAIN = fqdn;
         ROOT_URL = "https://${fqdn}/";

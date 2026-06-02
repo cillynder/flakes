@@ -6,7 +6,7 @@
   outputs = { nixpkgs, catppuccin, ... }:
   let
     name = "citrine";
-    fqdn = "garden.lava.moe";
+    fqdn = "lab.lava.moe";
     subnetId = "3";
 
     subnet = x: "fd0d:1::${subnetId}:${toString x}";
