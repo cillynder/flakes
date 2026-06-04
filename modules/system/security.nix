@@ -49,7 +49,7 @@
         {
           groups = [ "wheel" ];
           keepEnv = true;
-          persist = config.me.environment != "laptop";
+          persist = true;
         }
       ];
     };
