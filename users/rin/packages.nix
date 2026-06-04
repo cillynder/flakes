@@ -25,12 +25,6 @@ in {
     krita
     lutris
     mangohud
-    (prismlauncher.override {
-      jdks = [
-        jdk21
-        temurin-bin-25
-      ];
-    })
     inputs.nix-gaming.packages.x86_64-linux.osu-lazer-bin
     qmk
     tetrio-desktop
@@ -54,6 +48,12 @@ in {
     me.psensor
     obsidian
     pavucontrol
+    (prismlauncher.override {
+      jdks = [
+        jdk21
+        temurin-bin-25
+      ];
+    })
     qbittorrent
     rivalcfg
     screenkey
