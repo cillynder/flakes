@@ -6,7 +6,18 @@
         "-arinterval 15"
       ];
     };
-    xkb.options = "caps:escape";
   };
-  console.useXkbConfig = true;
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      default = {
+        ids = [ "*" ];
+        settings = {
+          main = {
+            capslock = "overload(control, esc)";
+          };
+        };
+      };
+    };
+  };
 }
