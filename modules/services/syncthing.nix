@@ -18,6 +18,6 @@ in
     group = "users";
     dataDir = "/persist/shared/.syncthing/data";
     configDir = "/persist/shared/.syncthing/config";
-    guiAddress = if config.me.gui then "127.0.0.1:8384" else "";
+    guiAddress = if config.me.gui then "127.0.0.1:8384" else ":8384";
   };
 }
