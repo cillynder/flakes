@@ -1,7 +1,8 @@
 { config, ... }:
 let
   dir = "/persist/shared/.syncthing";
-  uid = toString config.services.syncthing.user;
+  user = if config.me.gui then "rin" else "hana";
+  uid = toString config.users.users."${user}".uid;
   gid = toString config.users.groups.users.gid;
 in
 {
@@ -13,9 +14,10 @@ in
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
-    user = "rin";
+    user = user;
     group = "users";
     dataDir = "/persist/shared/.syncthing/data";
     configDir = "/persist/shared/.syncthing/config";
+    guiAddress = if config.me.gui then "127.0.0.1:8384" else "";
   };
 }
