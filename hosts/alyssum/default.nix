@@ -1,4 +1,4 @@
-{ inputs, modules, modulesPath, ... }: {
+{ inputs, lib, modules, modulesPath, ... }: {
   networking.hostName = "alyssum";
   system.stateVersion = "25.11";
   time.timeZone = "Australia/Melbourne";
@@ -24,6 +24,7 @@
     tailscale
 
     modules.services.nginx
+    modules.services.syncthing
 
     inputs.c-garnet.nixosModule
 
@@ -35,4 +36,5 @@
   ];
 
   me.environment = "headless";
+  services.syncthing.user = lib.mkForce "hana";
 }

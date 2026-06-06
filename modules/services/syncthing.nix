@@ -1,7 +1,7 @@
 { config, ... }:
 let
   dir = "/persist/shared/.syncthing";
-  uid = toString config.users.users.rin.uid;
+  uid = toString config.services.syncthing.user;
   gid = toString config.users.groups.users.gid;
 in
 {
