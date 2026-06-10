@@ -34,6 +34,8 @@
       };
       api.ENABLE_SWAGGER = false;
       other.SHOW_FOOTER_TEMPLATE_LOAD_TIME = false;
+      repository.ENABLE_PUSH_CREATE_USER = true;
+      repository.ENABLE_PUSH_CREATE_ORG = true;
       service.DISABLE_REGISTRATION = true;
     };
     stateDir = "/persist/forgejo";
