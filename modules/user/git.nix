@@ -10,6 +10,7 @@
       user.email = "mini@cilly.moe";
       core.abbrev = 11;
       safe.directory = "/home/rin/Projects/flakes";
+      init.defaultBranch = "master";
     };
   };
 }
