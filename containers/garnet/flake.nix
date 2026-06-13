@@ -41,6 +41,13 @@
           proxyPass = "http://${client4}:9200";
           proxyWebsockets = true;
         };
+        extraConfig = ''
+          proxy_read_timeout 3600s;
+          proxy_send_timeout 3600s;
+          keepalive_requests 100000;
+          keepalive_timeout 5m;
+          http2_max_concurrent_streams 512;
+        '';
         # TODO: hardcoded address
         listenAddresses = [ "100.67.2.1" ];
       };
