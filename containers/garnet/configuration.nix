@@ -28,6 +28,8 @@
     port = 9200;
     environment = {
       PROXY_TLS = "false";
+      IDP_ACCESS_TOKEN_EXPIRATION = "2592000";
+      IDP_ID_TOKEN_EXPIRATION = "2592000";
     };
     environmentFile = "/etc/opencloud-admin-pass";
   };
