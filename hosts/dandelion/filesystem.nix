@@ -22,7 +22,7 @@ in {
     "/" = {
       device = "rootfs";
       fsType = "tmpfs";
-      options = [ "defaults" "size=12G" "mode=755" ];
+      options = [ "defaults" "size=6G" "mode=755" ];
     };
     "/boot" = mkLabelMount "UEFI" "vfat";
 
