@@ -16,6 +16,8 @@
     host4 = subnet4 1;
     client4 = subnet4 2;
 
+    clientTun = "100.67.2.101";
+
     modules = [
       ./configuration.nix
       {
@@ -45,7 +47,7 @@
       services.nginx.virtualHosts."${fqdn}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
-        locations."/".proxyPass = "http://[${client}]:5030";
+        locations."/".proxyPass = "http://[${clientTun}]:5030";
         listenAddresses = listenAddr;
       };
 
@@ -53,7 +55,7 @@
       services.nginx.virtualHosts."${altfqdn}" = {
         useACMEHost = hostfqdn;
         forceSSL = true;
-        locations."/".proxyPass = "http://[${client}]:5030";
+        locations."/".proxyPass = "http://[${clientTun}]:5030";
         listenAddresses = listenAddr;
       };
 
