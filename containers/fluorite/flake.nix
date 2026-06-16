@@ -6,7 +6,6 @@
   let
     name = "fluorite";
     fqdn = "fluorite.lava.moe";
-    altfqdn = hostname: "fluorite.${hostname}.lava.moe";
     subnetId = "6";
 
     subnet = x: "fd0d:1::${subnetId}:${toString x}";
@@ -28,7 +27,13 @@
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
       inherit modules;
     };
-    nixosModule = { config, ... }: {
+    nixosModule = { config, ... }: let
+      altfqdn = "fluorite.${config.networking.hostName}.lava.moe";
+      # TODO: HACK
+      listenAddr = if (config.networking.hostName == "alyssum")
+        then [ "100.67.2.1" ]
+        else [ "10.0.0.1" "[fd0d::1]" "100.67.1.1" ];
+    in {
       networking.nat = {
         enable = true;
         enableIPv6 = true;
@@ -40,14 +45,14 @@
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".proxyPass = "http://[${client}]:5030";
-        listenAddresses = [ "10.0.0.1" "[fd0d::1]" "100.67.1.1" ];
+        listenAddresses = listenAddr;
       };
 
-      services.nginx.virtualHosts."${altfqdn config.networking.hostName}" = {
+      services.nginx.virtualHosts."${altfqdn}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".proxyPass = "http://[${client}]:5030";
-        listenAddresses = [ "10.0.0.1" "[fd0d::1]" "100.67.1.1" ];
+        listenAddresses = listenAddr;
       };
 
       systemd.tmpfiles.rules = [
