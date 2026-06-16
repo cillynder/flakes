@@ -20,7 +20,7 @@
       ./configuration.nix
       {
         networking.useHostResolvConf = false;
-        networking.nameservers = [ host ];
+        networking.nameservers = [ 8.8.8.8 ];
       }
     ];
   in {
@@ -95,6 +95,11 @@
         bindMounts."slskd_env" = {
           hostPath = config.age.secrets.slskd_env.path;
           mountPoint = "/binds/slskd_env";
+          isReadOnly = true;
+        };
+        bindMounts."tailscale_auth" = {
+          hostPath = config.age.secrets.tailscale_auth.path;
+          mountPoint = "/binds/tailscale_auth";
           isReadOnly = true;
         };
         # flake = "path:" + ./.;

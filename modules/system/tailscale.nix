@@ -4,6 +4,17 @@
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
   networking.firewall.allowedUDPPorts = lib.mkIf (config.me.environment == "headless") [ 123 ];
 
+  networking.nat = {
+    enable = true;
+    internalInterfaces = [ "tailscaled0" ];
+    forwardPorts = [
+      {
+        sourcePort = 50300;
+        proto = "tcp";
+        destination = "100.67.2.101:50300";
+      }
+    ];
+  };
   services.tailscale = {
     enable = true;
     authKeyFile = config.age.secrets.tailscale_auth.path;

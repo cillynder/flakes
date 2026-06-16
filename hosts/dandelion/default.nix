@@ -32,7 +32,6 @@
     inputs.c-citrine.nixosModule
     inputs.c-diamond.nixosModule
     inputs.c-emerald.nixosModule
-    inputs.c-fluorite.nixosModule
 
     ./filesystem.nix
     ./kernel.nix
