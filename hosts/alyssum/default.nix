@@ -5,6 +5,7 @@
 
   age.secrets = {
     acme_dns.file = ../../secrets/acme_dns.age;
+    slskd_env.file = ../../secrets/slskd_env.age;
     wpa_conf = {
       file = ../../secrets/wpa_conf.age;
       path = "/etc/wpa_supplicant/imperative.conf";
