@@ -22,7 +22,7 @@
     openFirewall = true;
     interfaceName = "userspace-networking";
     extraDaemonFlags = [ "--socks5-server=localhost:1055" ];
-    extraUpFlags = [ "--exit-node=dandelion" ];
+    extraSetFlags = [ "--exit-node=100.67.1.1" ];
   };
 
   services.slskd = {
