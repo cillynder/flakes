@@ -4,8 +4,9 @@
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
   networking.firewall.allowedUDPPorts = lib.mkIf (config.me.environment == "headless") [ 123 ];
 
-  networking.nat = {
+  networking.nat = lib.mkIf (config.networking.hostName == "dandelion") {
     enable = true;
+    externalInterface = "enp0s6";
     internalInterfaces = [ "tailscaled0" ];
     forwardPorts = [
       {
