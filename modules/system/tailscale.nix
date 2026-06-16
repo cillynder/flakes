@@ -16,6 +16,7 @@
       }
     ];
   };
+  networking.firewall.allowedTCPPorts = [ 50300 ];
   services.tailscale = {
     enable = true;
     authKeyFile = config.age.secrets.tailscale_auth.path;
