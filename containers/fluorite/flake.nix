@@ -28,7 +28,8 @@
       inherit modules;
     };
     nixosModule = { config, ... }: let
-      altfqdn = "fluorite.${config.networking.hostName}.lava.moe";
+      hostfqdn = "${config.networking.hostName}.lava.moe";
+      altfqdn = "fluorite.${hostfqdn}";
       # TODO: HACK
       listenAddr = if (config.networking.hostName == "alyssum")
         then [ "100.67.2.1" ]
@@ -48,8 +49,9 @@
         listenAddresses = listenAddr;
       };
 
+      security.acme.certs.${hostfqdn} = { extraDomainNames = [ "*.${hostfqdn}" ]; };
       services.nginx.virtualHosts."${altfqdn}" = {
-        useACMEHost = "lava.moe";
+        useACMEHost = hostfqdn;
         forceSSL = true;
         locations."/".proxyPass = "http://[${client}]:5030";
         listenAddresses = listenAddr;
