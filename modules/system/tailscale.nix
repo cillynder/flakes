@@ -7,7 +7,7 @@
   networking.nat = lib.mkIf (config.networking.hostName == "dandelion") {
     enable = true;
     externalInterface = "enp0s6";
-    internalInterfaces = [ "tailscaled0" ];
+    internalInterfaces = [ "tailscale0" ];
     forwardPorts = [
       {
         sourcePort = 50300;
