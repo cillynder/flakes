@@ -28,7 +28,6 @@
     modules.services.soulbeet
     modules.services.syncthing
 
-    inputs.c-fluorite.nixosModule
     inputs.c-garnet.nixosModule
 
     ./filesystem.nix
