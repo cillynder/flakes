@@ -64,6 +64,7 @@
       containers.${name} = {
         autoStart = true;
         privateNetwork = true;
+        enableTun = true;
         hostAddress = host4;
         localAddress = client4;
         hostAddress6 = host;
