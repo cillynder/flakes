@@ -32,7 +32,7 @@
     environmentFile = "/binds/slskd_env";
     settings = {
       shares.directories = [ "/binds/music/" ];
-      connection.proxy = {
+      soulseek.connection.proxy = {
         enabled = true;
         address = "localhost";
         port = "1055";
