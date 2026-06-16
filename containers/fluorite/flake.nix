@@ -20,7 +20,7 @@
       ./configuration.nix
       {
         networking.useHostResolvConf = false;
-        networking.nameservers = [ 8.8.8.8 ];
+        networking.nameservers = [ "8.8.8.8" ];
       }
     ];
   in {
