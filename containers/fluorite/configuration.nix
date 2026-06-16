@@ -23,6 +23,7 @@
     interfaceName = "userspace-networking";
     extraDaemonFlags = [ "--socks5-server=localhost:1055" ];
     extraSetFlags = [ "--exit-node=100.67.1.1" ];
+    useRoutingFeatures = "client";
   };
 
   services.slskd = {
