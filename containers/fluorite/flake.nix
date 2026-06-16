@@ -47,7 +47,7 @@
       services.nginx.virtualHosts."${fqdn}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
-        locations."/".proxyPass = "http://[${clientTun}]:5030";
+        locations."/".proxyPass = "http://${clientTun}:5030";
         listenAddresses = listenAddr;
       };
 
@@ -55,7 +55,7 @@
       services.nginx.virtualHosts."${altfqdn}" = {
         useACMEHost = hostfqdn;
         forceSSL = true;
-        locations."/".proxyPass = "http://[${clientTun}]:5030";
+        locations."/".proxyPass = "http://${clientTun}:5030";
         listenAddresses = listenAddr;
       };
 
