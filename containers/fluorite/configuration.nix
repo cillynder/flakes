@@ -20,8 +20,8 @@
     enable = true;
     authKeyFile = "/binds/tailscale_auth";
     openFirewall = true;
-    interfaceName = "userspace-networking";
-    extraDaemonFlags = [ "--socks5-server=localhost:1055" ];
+    # interfaceName = "userspace-networking";
+    # extraDaemonFlags = [ "--socks5-server=localhost:1055" ];
     extraSetFlags = [ "--exit-node=100.67.1.1" ];
     useRoutingFeatures = "client";
   };
@@ -32,11 +32,11 @@
     environmentFile = "/binds/slskd_env";
     settings = {
       shares.directories = [ "/binds/music/" ];
-      soulseek.connection.proxy = {
-        enabled = true;
-        address = "localhost";
-        port = "1055";
-      };
+      # soulseek.connection.proxy = {
+      #   enabled = true;
+      #   address = "localhost";
+      #   port = "1055";
+      # };
     };
   };
 }
