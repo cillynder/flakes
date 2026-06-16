@@ -22,6 +22,7 @@ in {
     ./services/nginx.nix
     ./services/postgres.nix
     ./services/sonarr.nix
+    ./services/soulbeet.nix
     ./services/synapse.nix
     ./services/syncthing.nix
     ./services/tmptsync.nix

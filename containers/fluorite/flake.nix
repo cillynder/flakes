@@ -6,6 +6,7 @@
   let
     name = "fluorite";
     fqdn = "fluorite.lava.moe";
+    altfqdn = hostname: "fluorite.${hostname}.lava.moe";
     subnetId = "6";
 
     subnet = x: "fd0d:1::${subnetId}:${toString x}";
@@ -36,6 +37,13 @@
       networking.firewall.allowedTCPPorts = [ 50300 ];
 
       services.nginx.virtualHosts."${fqdn}" = {
+        useACMEHost = "lava.moe";
+        forceSSL = true;
+        locations."/".proxyPass = "http://[${client}]:5030";
+        listenAddresses = [ "10.0.0.1" "[fd0d::1]" "100.67.1.1" ];
+      };
+
+      services.nginx.virtualHosts."${altfqdn config.networking.hostname}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".proxyPass = "http://[${client}]:5030";
