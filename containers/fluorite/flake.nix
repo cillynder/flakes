@@ -43,7 +43,7 @@
         listenAddresses = [ "10.0.0.1" "[fd0d::1]" "100.67.1.1" ];
       };
 
-      services.nginx.virtualHosts."${altfqdn config.networking.hostname}" = {
+      services.nginx.virtualHosts."${altfqdn config.networking.hostName}" = {
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".proxyPass = "http://[${client}]:5030";
