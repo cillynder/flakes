@@ -31,6 +31,7 @@
     ./filesystem.nix
     ./kernel.nix
     ./networking.nix
+    ./samba.nix
 
     ../../users/hana
   ];
