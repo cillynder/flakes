@@ -15,7 +15,7 @@
     };
     services.syncthing = {
       enable = true;
-      guiAddress = ":8385";
+      guiAddress = "[::]:8385";
     };
   };
 }
