@@ -32,6 +32,7 @@
     ./filesystem.nix
     ./kernel.nix
     ./networking.nix
+    ./home.syncthing.nix
     ./samba.nix
 
     ../../users/hana
