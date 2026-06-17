@@ -20,6 +20,8 @@ let
       services.syncthing = {
         enable = true;
         guiAddress = "[::]:${toString port}";
+        overrideDevices = false;
+        overrideFolders = false;
         settings = {
           options.listenAddresses = [
             "tcp://0.0.0.0:2${toString port}"
