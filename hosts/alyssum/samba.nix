@@ -13,10 +13,12 @@
     isNormalUser = true;
   };
   system.activationScripts = {
-    init_smbpasswd.text = ''
-      /run/current-system/sw/bin/printf "$(/run/current-system/sw/bin/cat ${config.age.secrets.passwd_smbcilly.path})\n$(/run/current-system/sw/bin/cat ${config.age.secrets.passwd_smbcilly.path})\n" | /run/current-system/sw/bin/smbpasswd -sa cilly
+    init_smbpasswd.text = let
+      smbpasswd = "${config.services.samba.package}/bin/smbpasswd";
+    in ''
+      printf "$(cat ${config.age.secrets.passwd_smbcilly.path})\n$(cat ${config.age.secrets.passwd_smbcilly.path})\n" | ${smbpasswd} -sa cilly
 
-      /run/current-system/sw/bin/printf "$(/run/current-system/sw/bin/cat ${config.age.secrets.passwd_smbkujira.path})\n$(/run/current-system/sw/bin/cat ${config.age.secrets.passwd_smbkujira.path})\n" | /run/current-system/sw/bin/smbpasswd -sa kujira
+      printf "$(cat ${config.age.secrets.passwd_smbkujira.path})\n$(cat ${config.age.secrets.passwd_smbkujira.path})\n" | ${smbpasswd} -sa kujira
     '';
   };
 
