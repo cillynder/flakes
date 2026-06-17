@@ -20,12 +20,14 @@ let
       services.syncthing = {
         enable = true;
         guiAddress = "[::]:${toString port}";
-        options.listenAddresses = [
-          "tcp://0.0.0.0:2${toString port}"
-          "quic://0.0.0.0:2${toString port}"
-          "dynamic+https://relays.syncthing.net/endpoint"
-        ];
-        settings.defaults.folder.path = "/flower/syncthing/${user}";
+        settings = {
+          options.listenAddresses = [
+            "tcp://0.0.0.0:2${toString port}"
+            "quic://0.0.0.0:2${toString port}"
+            "dynamic+https://relays.syncthing.net/endpoint"
+          ];
+          defaults.folder.path = "/flower/syncthing/${user}";
+        };
       };
     };
   };
