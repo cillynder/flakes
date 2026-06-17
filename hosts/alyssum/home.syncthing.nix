@@ -8,6 +8,11 @@
     linger = true;
   };
   home-manager.users.kujira = { ... }: {
+    home = {
+      username = "kujira";
+      homeDirectory = "/home/kujira";
+      stateVersion = "26.05";
+    };
     services.syncthing = {
       enable = true;
       guiAddress = ":8385";
