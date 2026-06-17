@@ -8,6 +8,8 @@ let
   rin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPru5eTBvHJ4ZmrrzPRHCGM09wQP/ZHSaKYalDuBVO15";
 in {
   "secrets/passwd.age".publicKeys = [ anemone blossom rin ];
+  "secrets/passwd_smbcilly.age".publicKeys = [ alyssum rin ];
+  "secrets/passwd_smbkujira.age".publicKeys = [ alyssum rin ];
   "secrets/wpa_conf.age".publicKeys = [ alyssum blossom rin ];
 
   "secrets/acme_dns.age".publicKeys = [ alyssum dandelion hazel rin ];

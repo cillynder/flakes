@@ -1,6 +1,9 @@
 { config, ... }: {
   networking.firewall.allowPing = true;
 
+  age.secrets.passwd_smbcilly.file = ../../secrets/passwd_smbcilly.age;
+  age.secrets.passwd_smbkujira.file = ../../secrets/passwd_smbkujira.age;
+
   users.users.cilly = {
     hashedPasswordFile = config.age.secrets.passwd.path;
     isNormalUser = true;
@@ -11,9 +14,9 @@
   };
   system.activationScripts = {
     init_smbpasswd.text = ''
-      /run/current-system/sw/bin/printf "$(/run/current-system/sw/bin/cat ${config.age.secrets.passwd.path})\n$(/run/current-system/sw/bin/cat ${config.age.secrets.passwd.path})\n" | /run/current-system/sw/bin/smbpasswd -sa cilly
+      /run/current-system/sw/bin/printf "$(/run/current-system/sw/bin/cat ${config.age.secrets.passwd_smbcilly.path})\n$(/run/current-system/sw/bin/cat ${config.age.secrets.passwd_smbcilly.path})\n" | /run/current-system/sw/bin/smbpasswd -sa cilly
 
-      /run/current-system/sw/bin/printf "$(/run/current-system/sw/bin/cat ${config.age.secrets.passwd_kujira.path})\n$(/run/current-system/sw/bin/cat ${config.age.secrets.passwd_kujira.path})\n" | /run/current-system/sw/bin/smbpasswd -sa kujira
+      /run/current-system/sw/bin/printf "$(/run/current-system/sw/bin/cat ${config.age.secrets.passwd_smbkujira.path})\n$(/run/current-system/sw/bin/cat ${config.age.secrets.passwd_smbkujira.path})\n" | /run/current-system/sw/bin/smbpasswd -sa kujira
     '';
   };
 
