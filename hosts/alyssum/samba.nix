@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
   networking.firewall.allowPing = true;
 
   age.secrets.passwd_smbcilly.file = ../../secrets/passwd_smbcilly.age;
@@ -24,9 +24,11 @@
 
   services.samba = {
     enable = true;
+    package = pkgs.samba4Full;
     openFirewall = true;
     settings = {
       global = {
+        "server smb encrypt" = "required";
         "workgroup" = "WORKGROUP";
         "server string" = "smbnix";
         "netbios name" = "smbnix";
