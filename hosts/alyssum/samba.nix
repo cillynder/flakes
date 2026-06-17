@@ -33,7 +33,7 @@
         "server string" = "smbnix";
         "netbios name" = "smbnix";
         "security" = "user";
-        "hosts allow" = "100.67.2.1 127.0.0.1 localhost";
+        "hosts allow" = "100.64.0.0/10 127.0.0.1 alyssum localhost";
         "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
         "map to guest" = "bad user";
