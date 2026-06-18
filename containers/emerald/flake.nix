@@ -9,11 +9,11 @@
     shareFqdn = "muse.lava.moe";
     subnetId = "5";
 
-    subnet = x: "fd0d:1::${subnetId}:${toString x}";
+    subnet = x: "fd0d:2::${subnetId}:${toString x}";
     host = subnet 1;
     client = subnet 2;
 
-    subnet4 = x: "10.30.${subnetId}.${toString x}";
+    subnet4 = x: "10.32.${subnetId}.${toString x}";
     host4 = subnet4 1;
     client4 = subnet4 2;
 
@@ -39,13 +39,7 @@
         useACMEHost = "lava.moe";
         forceSSL = true;
         locations."/".proxyPass = "http://[${client}]:4533";
-        listenAddresses = [ "10.0.0.1" "[fd0d::1]" "100.67.1.1" ];
-      };
-      services.nginx.virtualHosts."${shareFqdn}" = {
-        useACMEHost = "lava.moe";
-        forceSSL = true;
-        locations."/".return = "404";
-        locations."/share/".proxyPass = "http://[${client}]:4533";
+        listenAddresses = [ "100.67.2.1" ];
       };
 
       systemd.tmpfiles.rules = [ "d /persist/containers/${name} 755 root users" ];

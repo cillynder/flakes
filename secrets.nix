@@ -13,7 +13,7 @@ in {
   "secrets/wpa_conf.age".publicKeys = [ alyssum blossom rin ];
 
   "secrets/acme_dns.age".publicKeys = [ alyssum dandelion hazel rin ];
-  "secrets/navidrome_env.age".publicKeys = [ anemone dandelion rin ];
+  "secrets/navidrome_env.age".publicKeys = [ alyssum dandelion rin ];
   "secrets/slskd_env.age".publicKeys = [ anemone dandelion rin ];
   "secrets/tailscale_auth.age".publicKeys = [ alyssum anemone blossom dandelion rin ];
   "secrets/warden_admin.age".publicKeys = [ rin ];

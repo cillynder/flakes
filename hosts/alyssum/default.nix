@@ -6,6 +6,7 @@
   age.secrets = {
     acme_dns.file = ../../secrets/acme_dns.age;
     passwd.file = ../../secrets/passwd.age;
+    navidrome_env.file = ../../secrets/navidrome_env.age;
     wpa_conf = {
       file = ../../secrets/wpa_conf.age;
       path = "/etc/wpa_supplicant/imperative.conf";
@@ -27,6 +28,7 @@
     modules.services.nginx
     modules.services.syncthing
 
+    inputs.c-emerald.nixosModule
     inputs.c-garnet.nixosModule
 
     ./filesystem.nix
