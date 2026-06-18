@@ -12,6 +12,10 @@ in {
   "secrets/passwd_smbkujira.age".publicKeys = [ alyssum rin ];
   "secrets/wpa_conf.age".publicKeys = [ alyssum blossom rin ];
 
+  "secrets/restic_env.age".publicKeys = [ alyssum dandelion rin ];
+  "secrets/restic_pass.age".publicKeys = [ alyssum dandelion rin ];
+  "secrets/restic_url.age".publicKeys = [ alyssum dandelion rin ];
+
   "secrets/acme_dns.age".publicKeys = [ alyssum dandelion hazel rin ];
   "secrets/navidrome_env.age".publicKeys = [ alyssum dandelion rin ];
   "secrets/slskd_env.age".publicKeys = [ anemone dandelion rin ];
