@@ -11,6 +11,7 @@
       core.abbrev = 11;
       safe.directory = "/home/rin/Projects/flakes";
       init.defaultBranch = "master";
+      push.autoSetupRemote = true;
     };
   };
 }
