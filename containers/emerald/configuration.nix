@@ -19,4 +19,5 @@
       MusicFolder = "/binds/music/main";
     };
   };
+  systemd.services.navidrome.serviceConfig.BindReadOnlyPaths = ["/binds/music"];
 }
