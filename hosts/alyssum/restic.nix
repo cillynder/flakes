@@ -18,7 +18,7 @@
       OnCalendar = "*-*-* *:00,30:00";
       Persistent = true;
     };
-    bleh = [
+    pruneOpts = [
       "--keep-last 24"
       "--keep-hourly 24"
       "--keep-daily 7"
