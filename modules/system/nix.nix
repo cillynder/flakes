@@ -1,5 +1,6 @@
-{ config, lib, pkgs, ... }: {
+{ config, inputs, pkgs, ... }: {
   nix = {
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     package = pkgs.nixVersions.latest;
 
     settings = rec {

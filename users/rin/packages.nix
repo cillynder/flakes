@@ -15,7 +15,6 @@ in {
     ffmpeg
     gnupg
     kitty
-    nil
     nodejs_latest
     pamixer
     pnpm

@@ -167,7 +167,7 @@ vim.diagnostic.config({
 
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local servers = { 'astro', 'clangd', 'cssls', 'html', 'nil_ls', 'tailwindcss', 'texlab', 'ts_ls', 'yamlls' }
+local servers = { 'astro', 'clangd', 'cssls', 'html', 'tailwindcss', 'texlab', 'ts_ls', 'yamlls' }
 for _, lsp in ipairs(servers) do
     vim.lsp.config(lsp, {
         capabilities = capabilities,
@@ -291,6 +291,32 @@ vim.lsp.config("diagnosticls", {
     }
 })
 vim.lsp.enable("diagnosticls")
+
+-- LSP/nixd
+vim.lsp.config("nixd", {
+  cmd = { "nixd" },
+  filetypes = { "nix" },
+  root_markers = { "flake.nix", ".git" },
+  settings = {
+    nixd = {
+      nixpkgs = {
+        expr = "import <nixpkgs> { }",
+      },
+      formatting = {
+        command = { "nixfmt" },
+      },
+      options = {
+        nixos = {
+          expr = '(builtins.getFlake (toString ./.)).nixosConfigurations.{{HOSTNAME}}.options',
+        },
+        home_manager = {
+          expr = '(builtins.getFlake (builtins.toString ./.)).nixosConfigurations."{{USERNAME}}@{{HOSTNAME}}".options.home-manager.users.type.getSubOptions []',
+        },
+      },
+    },
+  },
+})
+vim.lsp.enable("nixd")
 
 -- LSP/Signatures
 require("lsp_signature").setup {

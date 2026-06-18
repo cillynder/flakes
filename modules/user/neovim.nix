@@ -1,9 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, sysConfig, ... }:
 let
   luaconf = pkgs.writeText "config.lua"
     (lib.replaceStrings
-      ["{{OMNISHARP_PATH}}" "{{DART_PATH}}" "{{CATPPUCCIN_FLAVOUR}}"]
-      ["${pkgs.omnisharp-roslyn}/bin/OmniSharp" "${pkgs.dart}/bin/dart" config.catppuccin.nvim.flavor]
+      ["{{OMNISHARP_PATH}}" "{{DART_PATH}}" "{{CATPPUCCIN_FLAVOUR}}" "{{USERNAME}}" "{{HOSTNAME}}"]
+      ["${pkgs.omnisharp-roslyn}/bin/OmniSharp" "${pkgs.dart}/bin/dart" config.catppuccin.nvim.flavor config.home.username sysConfig.networking.hostName]
       (builtins.readFile ../../res/config.lua));
 in {
   systemd.user.tmpfiles.rules = [
@@ -21,6 +21,7 @@ in {
     withRuby = false;
 
     extraPackages = with pkgs; [
+      nixd
       rust-analyzer
       texlab
       astro-language-server
