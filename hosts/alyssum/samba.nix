@@ -4,6 +4,7 @@ let
     passwd_fname = "passwd_smb${user}";
   in {
     age.secrets.${passwd_fname}.file = ../../secrets/${passwd_fname}.age;
+    me.binds."/flower/smb/${user}/music" = "/flower/media/music/${user}";
     me.binds."/flower/smb/${user}/syncthing" = "/flower/syncthing/${user}";
 
     users.users.${user} = {
