@@ -6,7 +6,7 @@
   services.restic.backups."flower" = {
     initialize = true;
     createWrapper = true;
-    progressFps = "0.016666";
+    progressFps = 0.016666;
 
     environmentFile = config.age.secrets.restic_env.path;
     passwordFile = config.age.secrets.restic_pass.path;
