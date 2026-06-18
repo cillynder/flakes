@@ -62,7 +62,7 @@
           isReadOnly = false;
         };
         bindMounts."music" = {
-          hostPath = "/persist/media/music";
+          hostPath = "/flower/media/music";
           mountPoint = "/binds/music";
           isReadOnly = true;
         };

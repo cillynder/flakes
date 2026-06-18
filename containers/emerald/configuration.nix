@@ -16,7 +16,7 @@
       ShareURL = "https://${shareFqdn}";
       EnableSharing = true;
       DataFolder = "/persist/navidrome";
-      MusicFolder = "/binds/music";
+      MusicFolder = "/binds/music/main";
     };
   };
 }
