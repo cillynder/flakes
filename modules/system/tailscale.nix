@@ -10,4 +10,7 @@
     openFirewall = true;
     useRoutingFeatures = if config.me.environment == "headless" then "both" else "client";
   };
+  systemd.services.tailscaled.serviceConfig.LogFilterPatterns = [
+    "~magicsock.*does not know about peer.*removing route"
+  ];
 }
