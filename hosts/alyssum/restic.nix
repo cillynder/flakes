@@ -13,7 +13,7 @@
     repositoryFile = config.age.secrets.restic_url.path;
 
     paths = ["/flower"];
-    exclude = ["/.snapshots"];
+    exclude = ["/flower/.snapshots"];
     timerConfig = {
       # every 6 hours
       OnCalendar = "*-*-* 00,06,12,18:00:00";
