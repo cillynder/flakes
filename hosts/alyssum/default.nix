@@ -37,6 +37,7 @@
     ./networking.nix
     ./restic.nix
     ./samba.nix
+    ./snapper.nix
 
     ../../users/hana
   ];
