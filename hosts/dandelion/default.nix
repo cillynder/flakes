@@ -34,6 +34,7 @@
 
     ./filesystem.nix
     ./kernel.nix
+    ./immich-proxy.nix
     ./networking.nix
     ./nginx.nix
 
