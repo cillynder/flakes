@@ -6,9 +6,9 @@
   };
 
   me.binds."/var/lib/immich" = "/flower/immich";
-  me.binds."/flower/immich/encoded-video" = "immich/encoded-video";
-  me.binds."/flower/immich/profile" = "immich/profile";
-  me.binds."/flower/immich/thumbs" = "immich/thumbs";
+  me.binds."/var/lib/immich/encoded-video" = "immich/encoded-video";
+  me.binds."/var/lib/immich/profile" = "immich/profile";
+  me.binds."/var/lib/immich/thumbs" = "immich/thumbs";
   hardware.graphics.enable = true;
   users.users.immich.extraGroups = [ "video" "render" ];
 
