@@ -1,4 +1,4 @@
-{ ... }:
+{ gcSecrets, ... }:
 let
   bind = src: {
     depends = [ "/nix" ];
@@ -32,4 +32,6 @@ in {
     "/persist/.snapshots" = submount "/snap/persist" false;
     "/var/log/journal" = bind "/persist/journal";
   };
+
+  me.binds."${gcSecrets.binds."navi/1a"}" = gcSecrets.binds."navi/1b";
 }
