@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, lib, ... }: {
   age.secrets.restic_env.file = ../../secrets/restic_env.age;
   age.secrets.restic_pass.file = ../../secrets/restic_pass.age;
   age.secrets.restic_url.file = ../../secrets/restic_url.age;
@@ -13,7 +13,8 @@
     repositoryFile = config.age.secrets.restic_url.path;
 
     paths = ["/flower"];
-    exclude = ["/flower/.snapshots"];
+    exclude = ["/flower/.snapshots"]
+    ++ builtins.filter (x: lib.strings.hasPrefix "/flower" x) (builtins.attrNames config.me.binds);
     timerConfig = {
       # every 6 hours
       OnCalendar = "*-*-* 00,06,12,18:00:00";
