@@ -5,7 +5,10 @@
     settings.server.externalDomain = "https://photos.lava.moe";
   };
 
-  me.binds."/var/lib/immich" = "immich";
+  me.binds."/var/lib/immich" = "/flower/immich";
+  me.binds."/flower/immich/encoded-video" = "immich/encoded-video";
+  me.binds."/flower/immich/profile" = "immich/profile";
+  me.binds."/flower/immich/thumbs" = "immich/thumbs";
   hardware.graphics.enable = true;
   users.users.immich.extraGroups = [ "video" "render" ];
 
