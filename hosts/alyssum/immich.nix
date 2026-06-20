@@ -1,8 +1,17 @@
-{ config, ... }: {
+{ config, ... }:
+let
+  fqdn = "photos.lava.moe";
+  shareFqdn = "memo.lava.moe";
+in {
   services.immich = {
     enable = true;
     accelerationDevices = null;
-    settings.server.externalDomain = "https://photos.lava.moe";
+    settings.server.externalDomain = "https://${shareFqdn}";
+  };
+
+  services.immich-public-proxy = {
+    enable = true;
+    immichUrl = "https://${fqdn}";
   };
 
   me.binds."/var/lib/immich" = "/flower/immich";
@@ -12,13 +21,29 @@
   hardware.graphics.enable = true;
   users.users.immich.extraGroups = [ "video" "render" ];
 
-  services.nginx.virtualHosts."photos.lava.moe" = {
+  services.nginx.virtualHosts."${fqdn}" = {
     useACMEHost = "lava.moe";
     forceSSL = true;
     listenAddresses = config.me.localAddrs;
 
     locations."/" = {
       proxyPass = "http://[::1]:${toString config.services.immich.port}";
+      proxyWebsockets = true;
+      extraConfig = ''
+        client_max_body_size 50000M;
+        proxy_read_timeout   600s;
+        proxy_send_timeout   600s;
+        send_timeout         600s;
+      '';
+    };
+  };
+
+  services.nginx.virtualHosts."${shareFqdn}" = {
+    useACMEHost = "lava.moe";
+    forceSSL = true;
+
+    locations."/" = {
+      proxyPass = "http://[::1]:${toString config.services.immich-public-proxy.port}";
       proxyWebsockets = true;
       extraConfig = ''
         client_max_body_size 50000M;
