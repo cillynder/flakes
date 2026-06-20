@@ -49,5 +49,9 @@ in {
       type = with lib.types; attrsOf str;
       default = {};
     };
+
+    localAddrs = lib.mkOption {
+      type = with lib.types; listOf str;
+    };
   };
 }
