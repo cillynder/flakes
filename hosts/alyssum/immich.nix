@@ -13,8 +13,8 @@ in {
   me.binds."/var/lib/immich/encoded-video" = "immich/encoded-video";
   me.binds."/var/lib/immich/profile" = "immich/profile";
   me.binds."/var/lib/immich/thumbs" = "immich/thumbs";
-  me.binds."/var/lib/immich/external/1" = gcSecrets.binds."immich/external/1";
-  me.binds."/var/lib/immich/external/2" = gcSecrets.binds."immich/external/2";
+  me.binds."/mnt/immich_external/1/1" = gcSecrets.binds."immich/external/1/1";
+  me.binds."/mnt/immich_external/1/2" = gcSecrets.binds."immich/external/1/2";
   hardware.graphics.enable = true;
   users.users.immich.extraGroups = [ "video" "render" ];
 
