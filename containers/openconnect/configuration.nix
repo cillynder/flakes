@@ -1,8 +1,7 @@
 { inputs, pkgs, ... }: {
   system.stateVersion = "25.11";
 
-  networking.firewall.trustedInterfaces = [ "tailscale0" ];
-  networking.firewall.allowedUDPPorts = [ 123 ];
+  networking.firewall.enable = false;
 
   fileSystems."/var/lib/tailscale" = {
     device = "/persist";
