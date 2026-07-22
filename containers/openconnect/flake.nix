@@ -31,13 +31,13 @@
       networking.nat = {
         enable = true;
         enableIPv6 = true;
-        internalInterfaces = [ "ve-${name}" ];
+        internalInterfaces = [ "ve-${codename}" ];
       };
 
       systemd.tmpfiles.rules = [
         "d /persist/containers/${codename} 755 root users"
       ];
-      containers.${name} = {
+      containers.${codename} = {
         autoStart = true;
         privateNetwork = true;
         hostAddress = host4;
