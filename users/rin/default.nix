@@ -48,6 +48,9 @@
     ];
 
     services.mpris-proxy.enable = true;
+    services.spotifyd.enable = true;
+    services.spotifyd.settings.global.disable_discovery = true;
+    services.spotifyd.settings.global.bitrate = 320;
     home.packages = [ pkgs.wl-clipboard ];
 
     home.file.".local/bin/ipc-bridge.exe".source = builtins.fetchurl {
