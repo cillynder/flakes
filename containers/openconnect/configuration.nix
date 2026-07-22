@@ -22,5 +22,6 @@
 
   environment.systemPackages = [
     inputs.openconnect.packages.${pkgs.stdenv.hostPlatform.system}.default
+    pkgs.screen
   ];
 }
