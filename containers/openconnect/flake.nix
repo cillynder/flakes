@@ -27,7 +27,7 @@
   in {
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
       inherit modules;
-      extraConfig = { inherit inputs; };
+      specialArgs = { inherit inputs; };
     };
     nixosModule = { config, ... }: {
       networking.nat = {
