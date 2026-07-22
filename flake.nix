@@ -45,6 +45,7 @@
     c-emerald.url = "path:./containers/emerald";
     c-fluorite.url = "path:./containers/fluorite";
     c-garnet.url = "path:./containers/garnet";
+    c-hessonite.url = "path:./containers/openconnect";
   };
 
   outputs = { self, agenix, catppuccin, nixpkgs, ... } @ inputs:

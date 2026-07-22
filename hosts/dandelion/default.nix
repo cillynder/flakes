@@ -31,6 +31,7 @@
     inputs.c-citrine.nixosModule
     inputs.c-diamond.nixosModule
     inputs.c-fluorite.nixosModule
+    inputs.c-hessonite.nixosModule
 
     ./filesystem.nix
     ./kernel.nix

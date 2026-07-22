@@ -142,6 +142,20 @@
       },
       "parent": []
     },
+    "c-hessonite": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_10"
+      },
+      "locked": {
+        "path": "./containers/openconnect",
+        "type": "path"
+      },
+      "original": {
+        "path": "./containers/openconnect",
+        "type": "path"
+      },
+      "parent": []
+    },
     "catppuccin": {
       "inputs": {
         "nixpkgs": "nixpkgs_4"
@@ -609,7 +623,7 @@
       "inputs": {
         "flake-parts": "flake-parts_2",
         "git-hooks": "git-hooks",
-        "nixpkgs": "nixpkgs_10"
+        "nixpkgs": "nixpkgs_11"
       },
       "locked": {
         "lastModified": 1779768228,
@@ -694,6 +708,22 @@
     },
     "nixpkgs_10": {
       "locked": {
+        "lastModified": 1779560665,
+        "narHash": "sha256-tpyBcxPpcQb8ukyNF7DoCwfSY3VPsxHoYwj00Cayv5o=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_11": {
+      "locked": {
         "lastModified": 1779536132,
         "narHash": "sha256-q+fF42iv/geEbHfgSzy3tS0FF/EyD6XTZ98E6yxiBO8=",
         "owner": "NixOS",
@@ -708,7 +738,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_11": {
+    "nixpkgs_12": {
       "locked": {
         "lastModified": 1779560665,
         "narHash": "sha256-tpyBcxPpcQb8ukyNF7DoCwfSY3VPsxHoYwj00Cayv5o=",
@@ -724,7 +754,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_12": {
+    "nixpkgs_13": {
       "locked": {
         "lastModified": 1770019141,
         "narHash": "sha256-VKS4ZLNx4PNrABoB0L8KUpc1fE7CLpQXQs985tGfaCU=",
@@ -910,7 +940,7 @@
     "pastel": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_12",
+        "nixpkgs": "nixpkgs_13",
         "pnpm2nix": "pnpm2nix"
       },
       "locked": {
@@ -977,6 +1007,7 @@
         "c-emerald": "c-emerald",
         "c-fluorite": "c-fluorite",
         "c-garnet": "c-garnet",
+        "c-hessonite": "c-hessonite",
         "catppuccin": "catppuccin_2",
         "catppuccin-palette": "catppuccin-palette",
         "fast-syntax-highlighting": "fast-syntax-highlighting",
@@ -985,7 +1016,7 @@
         "neovim-nightly": "neovim-nightly",
         "nix-gaming": "nix-gaming",
         "nix-index-database": "nix-index-database",
-        "nixpkgs": "nixpkgs_11",
+        "nixpkgs": "nixpkgs_12",
         "nvim-treesitter": "nvim-treesitter",
         "pastel": "pastel",
         "pure": "pure",
