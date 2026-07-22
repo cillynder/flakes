@@ -47,7 +47,11 @@
         nixpkgs = nixpkgs;
         enableTun = true;
         ephemeral = true;
-        config = { imports = modules; networking.hostName = "${codename}.${config.networking.hostName}"; };
+        config = {
+          imports = modules;
+          networking.hostName = codename;
+          networking.domain = config.networking.hostName;
+        };
 
         bindMounts."persist" = {
           hostPath = "/persist/containers/${codename}";
