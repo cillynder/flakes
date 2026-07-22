@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, ... }: {
   system.stateVersion = "25.11";
 
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
@@ -22,6 +22,6 @@
   systemd.network.wait-online.enable = false;
 
   environment.systemPackages = [
-    inputs.openconnect.packages.${pkgs.stdenv.hostPlatform}.default
+    inputs.openconnect.packages.${builtins.currentSystem}.default
   ];
 }
