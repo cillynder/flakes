@@ -3,6 +3,7 @@ builtins.map (path: import path) [
   ./cascadia-code.nix
   ./ccache.nix
   ./eww.nix
+  ./ghidra.nix
   ./jetbrains.nix
   ./material-icons.nix
   ./openldap.nix

@@ -40,6 +40,7 @@ in {
     feishin
     file-roller
     gamescope
+    ghidra-bin
     gimp3
     grim
     lm_sensors
