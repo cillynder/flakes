@@ -1,8 +1,9 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    openconnect.url = "github:yuezk/GlobalProtect-openconnect";
   };
-  outputs = { nixpkgs, ... }:
+  outputs = { nixpkgs, ... } @ inputs:
   let
     codename = "hessonite";
     name = "openconnect-router";
@@ -26,6 +27,7 @@
   in {
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
       inherit modules;
+      extraConfig = { inherit inputs; };
     };
     nixosModule = { config, ... }: {
       networking.nat = {

@@ -1,4 +1,4 @@
-{ ... }: {
+{ inputs, pkgs, ... }: {
   system.stateVersion = "25.11";
 
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
@@ -18,5 +18,10 @@
   };
   systemd.services.tailscaled.serviceConfig.LogFilterPatterns = [
     "~magicsock.*does not know about peer.*removing route"
+  ];
+  systemd.network.wait-online.enable = false;
+
+  environment.systemPackages = [
+    inputs.openconnect.packages.${pkgs.stdenv.hostPlatform}.default
   ];
 }
