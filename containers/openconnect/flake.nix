@@ -49,6 +49,7 @@
         nixpkgs = nixpkgs;
         enableTun = true;
         ephemeral = true;
+        specialArgs = { inherit inputs; };
         config = {
           imports = modules;
           networking.hostName = codename;
