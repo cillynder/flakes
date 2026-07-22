@@ -34,6 +34,7 @@
     ./filesystem.nix
     ./kernel.nix
     ./home.syncthing.nix
+    ./immich.nix
     ./networking.nix
     ./restic.nix
     ./samba.nix
