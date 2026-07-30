@@ -276,8 +276,8 @@ vim.lsp.config("diagnosticls", {
                     security = 'severity'
                 },
                 securities = {
-                    [2] = 'error',
-                    [1] = 'warning'
+                    ['1'] = 'warning',
+                    ['2'] = 'error'
                 }
             }
         },
