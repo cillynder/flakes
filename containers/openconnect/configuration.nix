@@ -9,6 +9,10 @@
     options = [ "bind" ];
   };
 
+  services.dnsmasq = {
+    enable = true;
+    resolveLocalQueries = false;
+  };
   services.tailscale = {
     enable = true;
     authKeyFile = "/binds/tailscale_auth";
