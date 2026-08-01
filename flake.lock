@@ -1055,15 +1055,16 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1783153338,
-        "narHash": "sha256-fvnW1doQpRd+Yrtw+FIPOUOTNSIo4FBgoNlEF6GzOe0=",
-        "owner": "yuezk",
+        "lastModified": 1785580001,
+        "narHash": "sha256-wy2mgbkDW8YFLleDnONUc6Enpf7fu3ObHF1jmp2P0IU=",
+        "owner": "cillynder",
         "repo": "GlobalProtect-openconnect",
-        "rev": "66f48b3ff62b23dd6d53c3134232302a34dae82a",
+        "rev": "5b177f38c4bb5e792be192d7dc00041f4b9e35bb",
         "type": "github"
       },
       "original": {
-        "owner": "yuezk",
+        "owner": "cillynder",
+        "ref": "resolvfix",
         "repo": "GlobalProtect-openconnect",
         "type": "github"
       }

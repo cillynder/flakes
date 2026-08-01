@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    openconnect.url = "github:yuezk/GlobalProtect-openconnect";
+    openconnect.url = "github:cillynder/GlobalProtect-openconnect/resolvfix";
   };
   outputs = { nixpkgs, ... } @ inputs:
   let
