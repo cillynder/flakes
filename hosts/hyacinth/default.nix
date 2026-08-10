@@ -44,4 +44,5 @@
   systemd.services.nix-daemon.environment.TMPDIR = "/nix/tmp";
 
   me.hasBluetooth = true;
+  programs.kdeconnect.enable = true;
 }
