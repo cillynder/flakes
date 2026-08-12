@@ -23,15 +23,15 @@ update_kernel() {
 }
 
 bump_inputs() {
-    nix flake update
-    git add flake.lock
-
     for con in ./containers/*/; do
         cd $con
         nix flake update
         git add flake.lock
         cd -
     done
+
+    nix flake update
+    git add flake.lock
 
     git commit -m "flake: bump inputs"
 }
