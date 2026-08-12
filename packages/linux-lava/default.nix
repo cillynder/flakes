@@ -77,6 +77,7 @@ let
       # preempt
       PREEMPT = yes;
       PREEMPT_COUNT = yes;
+      PREEMPT_LAZY = no;
       PREEMPT_VOLUNTARY = no;
       PREEMPTION = yes;
       PREEMPT_DYNAMIC = yes;
