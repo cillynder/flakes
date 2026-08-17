@@ -34,6 +34,8 @@
 
     modules.services.syncthing
 
+    inputs.vscode-server.nixosModules.default
+
     ./filesystem.nix
     ./kernel.nix
     ./networking.nix
@@ -45,4 +47,5 @@
 
   me.hasBluetooth = true;
   programs.kdeconnect.enable = true;
+  services.vscode-server.enable = true;
 }
