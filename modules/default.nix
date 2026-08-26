@@ -21,6 +21,7 @@ in {
     ./services/jellyfin.nix
     ./services/nginx.nix
     ./services/postgres.nix
+    ./services/searxng.nix
     ./services/sonarr.nix
     ./services/synapse.nix
     ./services/syncthing.nix

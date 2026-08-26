@@ -23,6 +23,7 @@
 
     modules.services.banksia
     modules.services.nginx
+    modules.services.searxng
     modules.services.unbound
     modules.services.website
 
