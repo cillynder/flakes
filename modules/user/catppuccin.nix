@@ -17,7 +17,6 @@
       accent = lib.mkDefault "pink";
       flavor = lib.mkDefault "mocha";
       kitty.enable = true;
-      gtk.enable = true;
       hyprlock.enable = true;
       nvim.enable = true;
     };
