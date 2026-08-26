@@ -34,6 +34,8 @@
 
     modules.services.syncthing
 
+    inputs.vscode-server.nixosModules.default
+
     ./filesystem.nix
     ./kernel.nix
     ./networking.nix
@@ -44,4 +46,6 @@
   systemd.services.nix-daemon.environment.TMPDIR = "/nix/tmp";
 
   me.hasBluetooth = true;
+  programs.kdeconnect.enable = true;
+  services.vscode-server.enable = true;
 }
