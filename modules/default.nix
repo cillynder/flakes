@@ -19,6 +19,7 @@ in {
   services = mkAttrsFromPaths [
     ./services/banksia.nix
     ./services/jellyfin.nix
+    ./services/librechat.nix
     ./services/nginx.nix
     ./services/postgres.nix
     ./services/searxng.nix

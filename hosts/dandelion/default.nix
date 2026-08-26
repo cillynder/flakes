@@ -22,6 +22,7 @@
     wireguard
 
     modules.services.banksia
+    modules.services.librechat
     modules.services.nginx
     modules.services.searxng
     modules.services.unbound
