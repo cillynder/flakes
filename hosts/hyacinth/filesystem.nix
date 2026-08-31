@@ -36,15 +36,33 @@ in
     };
   };
   services.snapper.configs.cream = {
-      FSTYPE = "btrfs";
-      SUBVOLUME = "/mnt/cream/permanence";
-      TIMELINE_CLEANUP = true;
-      TIMELINE_CREATE = true;
-      TIMELINE_MIN_AGE = "1800";
-      TIMELINE_LIMIT_HOURLY = "5";
-      TIMELINE_LIMIT_DAILY = "7";
-      TIMELINE_LIMIT_WEEKLY = "0";
-      TIMELINE_LIMIT_MONTHLY = "0";
-      TIMELINE_LIMIT_YEARLY = "0";
+    FSTYPE = "btrfs";
+    SUBVOLUME = "/mnt/cream/permanence";
+    TIMELINE_CLEANUP = true;
+    TIMELINE_CREATE = true;
+    TIMELINE_MIN_AGE = "1800";
+    TIMELINE_LIMIT_HOURLY = "5";
+    TIMELINE_LIMIT_DAILY = "7";
+    TIMELINE_LIMIT_WEEKLY = "0";
+    TIMELINE_LIMIT_MONTHLY = "0";
+    TIMELINE_LIMIT_YEARLY = "0";
+  };
+  services.beesd.filesystems = {
+    cake = {
+      spec = "LABEL=CAKE";
+      hashTableSizeMB = 1024;
+      verbosity = "crit";
+      extraOptions = [
+        "--loadavg-target" "5.0"
+      ];
     };
+    cream = {
+      spec = "LABEL=CREAM";
+      hashTableSizeMB = 1024;
+      verbosity = "crit";
+      extraOptions = [
+        "--loadavg-target" "5.0"
+      ];
+    };
+  };
 }
