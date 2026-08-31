@@ -27,4 +27,6 @@ in {
   "secrets/wg_hazel.age".publicKeys = [ hazel rin ];
   "secrets/wg_hyacinth.age".publicKeys = [ blossom rin ];
   "secrets/wg_caramel.age".publicKeys = [ rin ];
+
+  "secrets/store_alyssum.age".publicKeys = [ alyssum rin ];
 }

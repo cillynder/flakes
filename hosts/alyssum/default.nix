@@ -36,6 +36,7 @@
     ./home.syncthing.nix
     ./immich.nix
     ./networking.nix
+    ./nix-serve.nix
     ./restic.nix
     ./samba.nix
     ./snapper.nix
