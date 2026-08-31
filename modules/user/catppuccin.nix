@@ -14,6 +14,8 @@
 
   config = {
     catppuccin = {
+      enable = true;
+      autoEnable = false;
       accent = lib.mkDefault "pink";
       flavor = lib.mkDefault "mocha";
       kitty.enable = true;
