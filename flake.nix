@@ -1,7 +1,7 @@
 {
   nixConfig = {
     extra-substituters = [
-      "https://alyssum-store.lava.moe?priority=67"
+      "https://alyssum-store.lava.moe?priority=1"
     ];
     extra-trusted-public-keys = [
       "alyssum-store.lava.moe-1:MsqKbJYYUfUof3gYFgqTZbJZew2Z49i3U53b8oitvi0="
