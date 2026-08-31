@@ -11,7 +11,7 @@
     enable = true;
     keyboards = {
       default = {
-        ids = [ "*" ];
+        ids = [ "*" "-3434:0340" ];
         settings = {
           main = {
             capslock = "esc";
