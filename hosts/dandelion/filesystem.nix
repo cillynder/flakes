@@ -14,7 +14,7 @@ let
     options = [ "defaults" "relatime" ];
   };
   mkBtrfsMount = name: subvol: atime: mkLabelMount name "btrfs" // {
-    options = [ "autodefrag" "compress=zstd:3" "defaults" "discard=async" "space_cache=v2" "ssd" "subvol=${subvol}" (if atime then "relatime" else "noatime") ];
+    options = [ "compress=zstd:3" "defaults" "discard=async" "space_cache=v2" "ssd" "subvol=${subvol}" (if atime then "relatime" else "noatime") ];
   };
   submount = mkBtrfsMount "DANDELION";
 in {

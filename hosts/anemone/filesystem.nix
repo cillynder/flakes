@@ -6,7 +6,7 @@ let
     options = [ "defaults" "relatime" ] ++ lib.optionals lazy [ "nofail" ];
   };
   mkBtrfsMount = name: subvol: atime: mkLabelMount name "btrfs" false // {
-    options = [ "autodefrag" "compress=zstd:3" "defaults" "discard=async" "space_cache=v2" "ssd" "subvol=${subvol}" (if atime then "relatime" else "noatime") ];
+    options = [ "compress=zstd:3" "defaults" "discard=async" "space_cache=v2" "ssd" "subvol=${subvol}" (if atime then "relatime" else "noatime") ];
   };
   submount = mkBtrfsMount "Anemone";
 in
