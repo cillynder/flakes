@@ -25,5 +25,7 @@ in {
       keepalive_timeout 5m;
       http2_max_concurrent_streams 512;
     '';
+    # TODO: hardcoded address
+    listenAddresses = [ "100.67.2.1" ];
   };
 }
