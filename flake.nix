@@ -1,4 +1,12 @@
 {
+  nixConfig = {
+    extra-substituters = [
+      "https://alyssum-store.lava.moe"
+    ];
+    extra-trusted-public-keys = [
+      "alyssum-store.lava.moe-1:MsqKbJYYUfUof3gYFgqTZbJZew2Z49i3U53b8oitvi0="
+    ];
+  };
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
