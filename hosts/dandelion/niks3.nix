@@ -43,10 +43,6 @@ in {
       domain = "store.lava.moe";
     };
 
-    #
-    # services.nginx.virtualHosts."cache.example.com".locations."/".extraConfig = ''
-    #   proxy_cache_valid 200 24h;
-    #   proxy_cache_valid 404 5m;
-    # '';
+    services.nginx.virtualHosts."store.lava.moe".listenAddresses = [ "100.67.2.1" ];
   };
 }
