@@ -41,8 +41,13 @@ in {
     nginx = {
       enable = true;
       domain = "store.lava.moe";
+      enableACME = true;
+      forceSSL = true;
     };
   };
 
-  services.nginx.virtualHosts."store.lava.moe".listenAddresses = [ "100.67.1.1" ];
+  services.nginx.virtualHosts."store.lava.moe" = {
+    useACMEHost = "lava.moe";
+    listenAddresses = [ "100.67.1.1" ];
+  };
 }
