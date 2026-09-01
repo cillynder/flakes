@@ -33,4 +33,14 @@ in
       neededForBoot = true;
     };
   };
+  services.beesd.filesystems = {
+    anemone = {
+      spec = "LABEL=Anemone";
+      hashTableSizeMB = 512;
+      verbosity = "crit";
+      extraOptions = [
+        "--loadavg-target" "5.0"
+      ];
+    };
+  };
 }
