@@ -45,14 +45,25 @@ in {
     };
   };
 
+  services.nginx.proxyCachePath."niks3cache" = {
+    enable = true;
+    keysZoneName = "niks3cache";
+    keysZoneSize = "10m";
+    maxSize = "1g";
+    inactive = "24h";
+    path = "/var/cache/nginx/cache_niks";
+  };
+
   services.nginx.virtualHosts."store.lava.moe" = {
     useACMEHost = "lava.moe";
     listenAddresses = [ "100.67.1.1" ];
     locations."/".extraConfig = ''
       proxy_redirect https://lstore-nix.s3.us-west-004.backblazeb2.com/ https://store.s3-cf.lava.moe/;
       proxy_redirect https://s3.us-west-004.backblazeb2.com/ https://store.s3-cf.lava.moe/;
+      proxy_cache niks3cache;
       proxy_cache_valid 200 24h;
       proxy_cache_valid 404 5m;
+      add_header X-Cache-Status $upstream_cache_status;
     '';
   };
 }
