@@ -28,6 +28,7 @@
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # services
+    niks3.url = "github:Mic92/niks3";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     pastel.url = "github:cillynder/pastel";
     stevenblack-hosts = { url = "github:StevenBlack/hosts"; flake = false; };

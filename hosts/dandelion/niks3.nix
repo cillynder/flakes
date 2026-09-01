@@ -1,8 +1,12 @@
-{ config, ... }: {
+{ config, inputs, ... }: {
   age.secrets."niks3_api_token".file = ../../secrets/niks3_api_token.age;
   age.secrets."niks3_signing_key".file = ../../secrets/niks3_signing_key.age;
   age.secrets."niks3_s3_access".file = ../../secrets/niks3_s3_access.age;
   age.secrets."niks3_s3_secret".file = ../../secrets/niks3_s3_secret.age;
+
+  imports = [
+    inputs.niks3.nixosModules.niks3
+  ];
 
   services.niks3 = {
     enable = true;
