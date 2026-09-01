@@ -59,7 +59,7 @@ in {
     locations."/".extraConfig = ''
       proxy_redirect https://lstore-nix.s3.us-west-004.backblazeb2.com/ https://store.s3-cf.lava.moe/;
       proxy_redirect https://s3.us-west-004.backblazeb2.com/ https://store.s3-cf.lava.moe/;
-      proxy_cache /var/cache/nginx/niks3cache;
+      proxy_cache niks3cache;
       proxy_cache_valid 200 24h;
       proxy_cache_valid 404 1m;
       add_header X-Cache-Status $upstream_cache_status;
