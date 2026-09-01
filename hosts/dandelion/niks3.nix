@@ -41,7 +41,7 @@ in {
     nginx = {
       enable = true;
       domain = "store.lava.moe";
-      enableACME = true;
+      enableACME = false;
       forceSSL = true;
     };
   };
