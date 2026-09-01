@@ -1,8 +1,16 @@
-{ config, inputs, ... }: {
-  age.secrets."niks3_api_token".file = ../../secrets/niks3_api_token.age;
-  age.secrets."niks3_signing_key".file = ../../secrets/niks3_signing_key.age;
-  age.secrets."niks3_s3_access".file = ../../secrets/niks3_s3_access.age;
-  age.secrets."niks3_s3_secret".file = ../../secrets/niks3_s3_secret.age;
+{ config, inputs, ... }:
+let
+  configure = name: {
+    file = ../../secrets/${name}.age;
+    mode = "770";
+    owner = "niks3";
+    group = "niks3";
+  };
+in {
+  age.secrets."niks3_api_token" = configure "niks3_api_token";
+  age.secrets."niks3_signing_key" = configure "niks3_signing_key";
+  age.secrets."niks3_s3_access" = configure "niks3_s3_access";
+  age.secrets."niks3_s3_secret" = configure "niks3_s3_secret";
 
   imports = [
     inputs.niks3.nixosModules.niks3
