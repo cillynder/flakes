@@ -44,5 +44,5 @@ in {
     };
   };
 
-  services.nginx.virtualHosts."store.lava.moe".listenAddresses = [ "100.67.2.1" ];
+  services.nginx.virtualHosts."store.lava.moe".listenAddresses = [ "100.67.1.1" ];
 }
