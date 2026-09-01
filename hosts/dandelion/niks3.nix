@@ -42,7 +42,7 @@ in {
       enable = true;
       domain = "store.lava.moe";
     };
-
-    services.nginx.virtualHosts."store.lava.moe".listenAddresses = [ "100.67.2.1" ];
   };
+
+  services.nginx.virtualHosts."store.lava.moe".listenAddresses = [ "100.67.2.1" ];
 }
