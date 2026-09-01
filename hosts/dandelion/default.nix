@@ -38,6 +38,7 @@
     ./kernel.nix
     ./immich-proxy.nix
     ./networking.nix
+    ./niks3.nix
     ./nginx.nix
 
     ../../users/hana

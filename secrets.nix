@@ -29,4 +29,9 @@ in {
   "secrets/wg_caramel.age".publicKeys = [ rin ];
 
   "secrets/store_alyssum.age".publicKeys = [ alyssum rin ];
+
+  "secrets/niks3_api_token.age".publicKeys = [ dandelion rin ];
+  "secrets/niks3_signing_key.age".publicKeys = [ dandelion rin ];
+  "secrets/niks3_s3_access.age".publicKeys = [ dandelion rin ];
+  "secrets/niks3_s3_secret.age".publicKeys = [ dandelion rin ];
 }
