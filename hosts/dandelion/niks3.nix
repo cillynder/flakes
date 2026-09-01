@@ -49,8 +49,8 @@ in {
     useACMEHost = "lava.moe";
     listenAddresses = [ "100.67.1.1" ];
     locations."/".extraConfig = ''
-      proxy_redirect https://lstore-nix.s3.us-west-004.backblazeb2.com/ https://store.s3-cf.lava.moe/
-      proxy_redirect https://s3.us-west-004.backblazeb2.com/ https://store.s3-cf.lava.moe/
+      proxy_redirect https://lstore-nix.s3.us-west-004.backblazeb2.com/ https://store.s3-cf.lava.moe/;
+      proxy_redirect https://s3.us-west-004.backblazeb2.com/ https://store.s3-cf.lava.moe/;
     '';
   };
 }
