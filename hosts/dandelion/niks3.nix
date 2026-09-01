@@ -11,9 +11,10 @@
   services.niks3 = {
     enable = true;
     httpAddr = "127.0.0.1:5751";
-    readProxy = true;
-    redirectTTL = "15m";
-    publicUrl = "store.s3-cf.lava.moe";
+    readProxy = {
+      enable = true;
+      redirectTTL = "15m";
+    };
 
     apiTokenFile = config.age.secrets."niks3_api_token".path;
     signKeyFiles = [ config.age.secrets."niks3_signing_key".path ];
@@ -26,6 +27,7 @@
       bucket = "lstore-nix";
       region = "us-west-004";
       useSSL = true;
+      publicUrl = "store.s3-cf.lava.moe";
     };
 
     nginx = {
