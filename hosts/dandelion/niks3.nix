@@ -35,7 +35,7 @@ in {
       bucket = "lstore-nix";
       region = "us-west-004";
       useSSL = true;
-      publicUrl = "store.s3-cf.lava.moe";
+      publicUrl = "https://store.s3-cf.lava.moe";
     };
 
     nginx = {
