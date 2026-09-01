@@ -2,9 +2,11 @@
   nixConfig = {
     extra-substituters = [
       "https://alyssum-store.lava.moe?priority=1"
+      "https://store.lava.moe?priority=5"
     ];
     extra-trusted-public-keys = [
       "alyssum-store.lava.moe-1:MsqKbJYYUfUof3gYFgqTZbJZew2Z49i3U53b8oitvi0="
+      "store.lava.moe-1:rEUz0+ilezDEaxKoDpjzlD8G3+ZNAeP2rfykatgr0gI="
     ];
   };
   inputs = {
