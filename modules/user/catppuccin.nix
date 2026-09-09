@@ -20,6 +20,7 @@
       flavor = lib.mkDefault "mocha";
       kitty.enable = true;
       hyprlock.enable = true;
+      hyprlock.useDefaultConfig = false;
       nvim.enable = true;
     };
 
