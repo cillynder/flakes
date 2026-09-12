@@ -20,7 +20,7 @@
         ];
       };
     };
-    services.dbus.packages = [ pkgs.dconf pkgs.gcr ];
+    services.dbus.packages = [ pkgs.dconf pkgs.gcr_4 ];
     services.gnome.sushi.enable = true;
   };
 }
