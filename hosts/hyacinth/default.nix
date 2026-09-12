@@ -12,7 +12,6 @@
   imports = with modules.system; [
     home-manager
 
-    aagl
     audio
     base
     bluetooth
