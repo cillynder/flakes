@@ -46,4 +46,5 @@
   ];
 
   me.environment = "headless";
+  me.binds."/var/lib/docker" = "docker";
 }
