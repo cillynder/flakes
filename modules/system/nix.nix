@@ -1,9 +1,15 @@
 { config, inputs, pkgs, ... }:
 let
-  alyssum-sub = if config.networking.hostName == "alyssum" then [] else [
+  alyssum-sub = if
+    config.networking.hostName == "alyssum" ||
+    config.networking.hostName == "dandelion"
+  then [] else [
     "https://alyssum-store.lava.moe?priority=1"
   ];
-  alyssum-key = if config.networking.hostName == "alyssum" then [] else [
+  alyssum-key = if
+    config.networking.hostName == "alyssum" ||
+    config.networking.hostName == "dandelion"
+  then [] else [
     "alyssum-store.lava.moe-1:MsqKbJYYUfUof3gYFgqTZbJZew2Z49i3U53b8oitvi0="
   ];
 in {
