@@ -14,6 +14,7 @@
     home-manager
 
     base
+    docker
     kernel
     nix-stable
     packages
