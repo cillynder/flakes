@@ -17,7 +17,7 @@
       EnableSharing = true;
       DataFolder = "/persist/navidrome";
       MusicFolder = "/binds/music/main";
-      SessionTimeout = "67d";
+      SessionTimeout = "6700h";
     };
   };
   systemd.services.navidrome.serviceConfig.BindReadOnlyPaths = ["/binds/music"];
