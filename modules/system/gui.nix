@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, inputs, lib, pkgs, ... }: {
   fonts = {
     enableDefaultPackages = true;
     fontconfig = {
@@ -26,5 +26,6 @@
     desktopManager.xterm.enable = false;
   };
 
+  environment.systemPackages = [ inputs.niri.packages.x86_64-linux.niri ];
   security.pam.services.hyprlock = {};
 }

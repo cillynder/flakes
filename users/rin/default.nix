@@ -61,5 +61,9 @@
       executable = true;
       source = ../../scripts/osu;
     };
+    home.file.".config/niri" = {
+      executable = true;
+      source = config.lib.file.mkOutOfStoreSymlink ../../res/niri;
+    };
   };
 }
