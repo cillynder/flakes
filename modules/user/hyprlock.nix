@@ -27,24 +27,25 @@ in
       };
       background = {
         monitor = "";
+        path = "${config.home.homeDirectory}/Pictures/Wallpapers/current.png";
         color = "$base";
       };
       shape = lib.optionals (config.me.batteryDevice != null) [
         # Battery pill
         {
           monitor = "";
-          size = s [165 65];
+          size = s [180 65];
           color = "$crust";
           rounding = -1;
           halign = "right";
           valign = "top";
-          position = sn [595 10];
+          position = sn [710 10];
         }
       ] ++ [
         # Time pill
         {
           monitor = "";
-          size = s [545 65];
+          size = s [660 65];
           color = "$crust";
           rounding = -1;
           halign = "right";
@@ -56,7 +57,7 @@ in
         # Fingerprint icon
         {
             monitor = "";
-            color = "$text";
+            color = "$crust";
             font_family = "Material Symbols Outlined";
             font_size = s 64;
             halign = "center";
@@ -67,7 +68,7 @@ in
         # Fingerprint text
         {
           monitor = "";
-          color = "$text";
+          color = "$crust";
           text = "$FPRINTPROMPT";
           font_size = s 25;
           font_family = "Open Sans";
@@ -83,7 +84,7 @@ in
           color = "$accent";
           font_family = "Material Symbols Outlined";
           font_size = s 27;
-          position = sn [695 20];
+          position = sn [825 20];
           halign = "right";
           valign = "top";
         }
@@ -94,7 +95,7 @@ in
           color = "$text";
           font_size = s 23;
           font_family = "Open Sans";
-          position = sn [625 20];
+          position = sn [740 20];
           halign = "right";
           valign = "top";
         }
