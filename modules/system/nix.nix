@@ -4,7 +4,7 @@ let
     config.networking.hostName == "alyssum" ||
     config.networking.hostName == "dandelion"
   then [] else [
-    "https://alyssum-store.lava.moe?priority=1"
+    "https://alyssum-store.lava.moe?priority=15"
   ];
   alyssum-key = if
     config.networking.hostName == "alyssum" ||
