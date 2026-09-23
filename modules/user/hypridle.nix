@@ -10,19 +10,19 @@ in
       general = {
         lock_cmd = "pidof hyprlock || hyprlock";
         before_sleep_cmd = "${lib.getExe pkgs.playerctl} pause; loginctl lock-session";
-        after_sleep_cmd = "hyprctl dispatch dpms on";
+        after_sleep_cmd = "niri msg action power-on-monitors";
       };
 
       listener = lib.optionals (config.me.kbBacklightDevice != null) [
         {
           timeout = 120;
-          on-timeout = "${kblight} -s && ${kblight} 0";
+          on-timeout = "${kblight} -s && ${kblight} set 0";
           on-resume = "${kblight} -r";
         }
       ] ++ [
         {
           timeout = 150;
-          on-timeout = "brightnessctl -s && brightnessctl 50%-";
+          on-timeout = "brightnessctl -s && brightnessctl set $(( $(brightnessctl get) / 2 ))";
           on-resume = "brightnessctl -r";
         }
         {
@@ -31,8 +31,8 @@ in
         }
         {
           timeout = 195;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
+          on-timeout = "niri msg action power-off-monitors";
+          on-resume = "niri msg action power-on-monitors";
         }
       ] ++ lib.optionals (config.me.environment == "laptop") [
         {
