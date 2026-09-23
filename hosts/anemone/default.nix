@@ -48,6 +48,7 @@
     kbBacklightDevice = "asus::kbd_backlight";
     hasFingerprint = true;
     hidpi = true;
+    monitor = "eDP-1";
   };
 
   programs.wireshark = {

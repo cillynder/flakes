@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, sysConfig, ... }:
 let
   scaling = if config.me.hidpi then 1 else 0.5;
   s = value: if builtins.isInt value || builtins.isFloat value
@@ -10,6 +10,8 @@ let
   else
     builtins.throw "invalid scaled value type ${builtins.typeOf value} for ${value}";
   sn = value: s (builtins.map (v: (-v)) value);
+
+  monitor = config.me.monitor or "";
 in
 {
   programs.hyprlock = {
@@ -33,7 +35,7 @@ in
       shape = lib.optionals (config.me.batteryDevice != null) [
         # Battery pill
         {
-          monitor = "";
+          monitor = monitor;
           size = s [180 65];
           color = "$crust";
           rounding = -1;
@@ -44,7 +46,7 @@ in
       ] ++ [
         # Time pill
         {
-          monitor = "";
+          monitor = monitor;
           size = s [660 65];
           color = "$crust";
           rounding = -1;
@@ -56,7 +58,7 @@ in
       label = lib.optionals config.me.hasFingerprint [
         # Fingerprint icon
         {
-            monitor = "";
+            monitor = monitor;
             color = "$crust";
             font_family = "Material Symbols Outlined";
             font_size = s 64;
@@ -67,7 +69,7 @@ in
         }
         # Fingerprint text
         {
-          monitor = "";
+          monitor = monitor;
           color = "$crust";
           text = "$FPRINTPROMPT";
           font_size = s 25;
@@ -79,7 +81,7 @@ in
       ] ++ lib.optionals (config.me.batteryDevice != null) [
         # Battery icon
         {
-          monitor = "";
+          monitor = monitor;
           text = "";
           color = "$accent";
           font_family = "Material Symbols Outlined";
@@ -90,7 +92,7 @@ in
         }
         # Battery percentage
         {
-          monitor = "";
+          monitor = monitor;
           text = ''cmd[update:60000] echo "<span weight='700'>$(cat /sys/class/power_supply/${config.me.batteryDevice}/capacity)%</span>"'';
           color = "$text";
           font_size = s 23;
@@ -102,7 +104,7 @@ in
       ] ++ [
         # Time and Date
         {
-          monitor = "";
+          monitor = monitor;
           color = "$text";
           font_family = "Open Sans";
           font_size = s 23;
@@ -114,7 +116,7 @@ in
 
         # Fail text under input
         {
-          monitor = "";
+          monitor = monitor;
           color = "$red";
           font_family = "Open Sans";
           font_size = s 25;
@@ -125,7 +127,7 @@ in
         }
       ];
       input-field = {
-        monitor = "";
+        monitor = monitor;
         size = s [600 120];
         outline_thickness = s 4;
         check_color = "$peach";

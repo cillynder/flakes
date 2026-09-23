@@ -45,6 +45,7 @@
   systemd.services.nix-daemon.environment.TMPDIR = "/nix/tmp";
 
   me.hasBluetooth = true;
+  me.monitor = "DP-1";
   programs.kdeconnect.enable = true;
   services.vscode-server.enable = true;
 }

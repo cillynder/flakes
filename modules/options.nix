@@ -45,6 +45,11 @@ in {
       default = false;
     };
 
+    monitor = mkOption {
+      type = with types; nullOr (uniq str);
+      default = null;
+    };
+
     binds = lib.mkOption {
       type = with lib.types; attrsOf str;
       default = {};
