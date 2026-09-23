@@ -574,6 +574,27 @@
         "type": "github"
       }
     },
+    "niri": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789719190,
+        "narHash": "sha256-ylGqxtEmvTejumAXUJGLJKE2m3KFApeRWDEXwr8oN3c=",
+        "owner": "cillynder",
+        "repo": "niri",
+        "rev": "80f74e5a124a1d2a9ff5a93f92abbfbf23a51ab7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cillynder",
+        "ref": "mini",
+        "repo": "niri",
+        "type": "github"
+      }
+    },
     "nix-gaming": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -1030,6 +1051,7 @@
         "linux-tkg": "linux-tkg",
         "neovim-nightly": "neovim-nightly",
         "niks3": "niks3",
+        "niri": "niri",
         "nix-gaming": "nix-gaming",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_16",

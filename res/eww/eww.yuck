@@ -50,28 +50,20 @@
   `bluetoothctl devices Connected | wc -l`)
 
 (deflisten ltitle :initial "" "./scripts/title.sh")
-(deflisten lworkspaces :initial "[]" "./scripts/workspaces.sh")
-(deflisten lcurrent_workspace :initial "1" "./scripts/active-workspace.sh")
+(defvar bar_open false)
 
 (defwidget bar []
-  (eventbox :onscroll "./scripts/scroll.sh {}"
-    (centerbox :orientation "h"
-               :class "bar"
-      (workspaces)
-      (title)
+  (box :orientation "h"
+    (box :orientation "h"
+         :halign "start"
+         :valign "center"
+         :class "bar"
+      (title))
+    (box :orientation "h"
+         :halign "end"
+         :valign "center"
+         :class "bar"
       (right_bar))))
-
-(defwidget workspaces []
-  (box :class "widget workspaces"
-       :halign "start"
-       :valign "center"
-       :vexpand true
-       :hexpand true
-    (for workspace in lworkspaces
-      (eventbox :cursor "hand"
-        (button :class "${workspace.id == lcurrent_workspace ? "focused" : (workspace.windows > 0 ? "occupied" : "empty")}"
-                :onclick "hyprctl dispatch workspace ${workspace.id}"
-          "${workspace.id == lcurrent_workspace ? "" : (workspace.windows > 0 ? "" : "")}")))))
 
 (defwidget title []
   (literal :content ltitle))

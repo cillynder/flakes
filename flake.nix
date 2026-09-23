@@ -22,6 +22,8 @@
     catppuccin-palette = { url = "github:catppuccin/palette"; flake = false; };
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     neovim-nightly.inputs.nixpkgs.follows = "nixpkgs";
+    niri.url = "github:cillynder/niri/mini";
+    niri.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-index-database.url = "github:nix-community/nix-index-database";

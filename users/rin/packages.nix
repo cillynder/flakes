@@ -46,6 +46,7 @@ in {
     lm_sensors
     maim
     me.psensor
+    inputs.niri.packages.x86_64-linux.niri
     obsidian
     pavucontrol
     (prismlauncher.override {
