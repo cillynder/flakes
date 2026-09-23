@@ -40,6 +40,8 @@
     modules.services.syncthing
   ];
 
+  environment.systemPackages = with pkgs; [ jetbrains.gateway ];
+
   me = {
     environment = "laptop";
     batteryDevice = "BATT";
