@@ -63,7 +63,8 @@
     };
     home.file.".config/niri" = {
       executable = true;
-      source = config.lib.file.mkOutOfStoreSymlink ../../res/niri;
+      # source = config.lib.file.mkOutOfStoreSymlink ../../res/niri;
+      source = ../../res/niri;
     };
   };
 }
