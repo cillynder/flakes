@@ -19,7 +19,7 @@
     corectrl
     docker
     flatpak
-    greetd
+    greetd-hyprland
     gui
     input
     kernel

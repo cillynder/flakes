@@ -1,6 +1,12 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, sysConfig, ... }:
 let
   kblight = "brightnessctl -d ${config.me.kbBacklightDevice}";
+  dpmsOn = if sysConfig.programs.hyprland.enable == true
+    then "hyprctl dispatch dpms on"
+    else "niri msg action power-on-monitors";
+  dpmsOff = if sysConfig.programs.hyprland.enable == true
+    then "hyprctl dispatch dpms off"
+    else "niri msg action power-off-monitors";
 in
 {
   home.packages = [ config.services.hypridle.package ];
@@ -10,7 +16,7 @@ in
       general = {
         lock_cmd = "pidof hyprlock || hyprlock";
         before_sleep_cmd = "${lib.getExe pkgs.playerctl} pause; loginctl lock-session";
-        after_sleep_cmd = "niri msg action power-on-monitors";
+        after_sleep_cmd = dpmsOn;
       };
 
       listener = lib.optionals (config.me.kbBacklightDevice != null) [
@@ -31,8 +37,8 @@ in
         }
         {
           timeout = 195;
-          on-timeout = "niri msg action power-off-monitors";
-          on-resume = "niri msg action power-on-monitors";
+          on-timeout = dpmsOff;
+          on-resume = dpmsOn;
         }
       ] ++ lib.optionals (config.me.environment == "laptop") [
         {
