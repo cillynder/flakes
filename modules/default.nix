@@ -41,6 +41,7 @@ in {
     ./system/docker.nix
     ./system/flatpak.nix
     ./system/greetd.nix
+    ./system/greetd-hyprland.nix
     ./system/gui.nix
     ./system/home-manager.nix
     ./system/input.nix
