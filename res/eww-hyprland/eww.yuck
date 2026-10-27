@@ -1,0 +1,165 @@
+(defwindow mainbar :monitor 0
+
+                   :geometry (geometry :x "0%"
+                                       :y "0%"
+                                       :width "100%"
+                                       :height "30px"
+                                       :anchor "top center")
+                   :stacking "fg"
+                   :exclusive false
+                   :focusable false
+  (bar))
+
+(defwindow mainbar-ext :monitor 1
+                   :geometry (geometry :x "0%"
+                                       :y "0%"
+                                       :width "100%"
+                                       :height "30px"
+                                       :anchor "top center")
+                   :stacking "fg"
+                   :exclusive false
+                   :focusable false
+  (bar))
+
+(defvar bat-enabled _BAT_ENABLED_)
+(defvar bt-enabled _BT_ENABLED_)
+(defvar wifi-enabled _WIFI_ENABLED_)
+
+(defvar bat-extended true)
+(defvar bluetooth-extended false)
+(defvar network-extended false)
+(defvar time-extended false)
+
+(defpoll ptime   :interval "1s"
+  `date +%H:%M`)
+(defpoll petimea :interval "1s" :run-while time-extended
+  `date "+%A, %d %B %Y  "`)
+(defpoll petimeb :interval "1s" :run-while time-extended
+  `date "+:%S"`)
+(defpoll pbat_cap :interval "5s" :run-while bat-enabled
+  `cat /sys/class/power_supply/_BAT_PATH_/capacity`)
+(defpoll pbat_status :interval "1s" :run-while bat-enabled
+  `cat /sys/class/power_supply/_BAT_PATH_/status`)
+(defpoll wifi_ssid :interval "1s" :run-while wifi-enabled
+  `iwctl station wlan0 show | grep "Connected network" | awk '{print $3}'`)
+(defpoll wifi_strength :interval "1s" :run-while wifi-enabled
+  `iw dev wlan0 link | awk '/signal/ {gsub("-",""); print $2}'`)
+(defpoll bluetooth_device :interval "1s" :run-while bt-enabled
+  `bluetoothctl devices Connected | grep Device | cut -d" " -f3-`)
+(defpoll bluetooth_device_count :interval "1s" :run-while bt-enabled
+  `bluetoothctl devices Connected | wc -l`)
+
+(deflisten ltitle :initial "" "./scripts/title.sh")
+(deflisten lworkspaces :initial "[]" "./scripts/workspaces.sh")
+(deflisten lcurrent_workspace :initial "1" "./scripts/active-workspace.sh")
+
+(defwidget bar []
+  (eventbox :onscroll "./scripts/scroll.sh {}"
+    (centerbox :orientation "h"
+               :class "bar"
+      (workspaces)
+      (title)
+      (right_bar))))
+
+(defwidget workspaces []
+  (box :class "widget workspaces"
+       :halign "start"
+       :valign "center"
+       :vexpand true
+       :hexpand true
+    (for workspace in lworkspaces
+      (eventbox :cursor "hand"
+        (button :class "${workspace.id == lcurrent_workspace ? "focused" : (workspace.windows > 0 ? "occupied" : "empty")}"
+                :onclick "hyprctl dispatch workspace ${workspace.id}"
+          "${workspace.id == lcurrent_workspace ? "" : (workspace.windows > 0 ? "" : "")}")))))
+
+(defwidget title []
+  (literal :content ltitle))
+
+(defwidget time_extension [text]
+  (revealer :transition "slideleft"
+            :reveal time-extended
+            :duration 150
+    (label :text text
+           :class "extension")))
+
+(defwidget right_bar []
+  (box :orientation "horizontal"
+       :space-evenly false
+       :halign "end"
+    (box :visible {bt-enabled} (bluetooth))
+    (box :visible {wifi-enabled} (network))
+    (box :visible {bat-enabled} (battery))
+    (time)))
+
+(defwidget bluetooth []
+  (button :onclick `eww update bluetooth-extended=${bluetooth-extended ? "false" : "true"}`
+    (box :orientation "horizontal"
+         :class {"widget pill" + ((bluetooth-extended && bluetooth_device != "") ? " extended" : "")}
+         :spacing {(bluetooth-extended && bluetooth_device != "") ? 5 : 0}
+         :space-evenly false
+      (label :text { bluetooth_device == "" ? "" : ""}
+             :class "base pill-icon")
+      (revealer :transition "slideleft"
+                :reveal {bluetooth-extended && bluetooth_device != ""}
+                :duration 150
+        (label :text { bluetooth_device_count == "1" ? bluetooth_device : (bluetooth_device_count + " devices") }
+               :class "base")))))
+
+(defwidget network []
+  (button :onclick `eww update network-extended=${network-extended ? "false" : "true"}`
+    (box :orientation "horizontal"
+         :class {"widget pill" + ((network-extended && wifi_ssid != "") ? " extended" : "")}
+         :spacing {(network-extended && wifi_ssid != "") ? 5 : 0}
+         :space-evenly false
+      (label :text {
+          (wifi_ssid == "") ? ""
+        : (wifi_strength == "") ? ""
+        : (wifi_strength < 75) ? ""
+        : (wifi_strength < 65) ? ""
+        : (wifi_strength < 60) ? ""
+        : (wifi_strength < 50) ? ""
+        : ""}
+             :class "base pill-icon")
+      (revealer :transition "slideleft"
+                :reveal {network-extended && wifi_ssid != ""}
+                :duration 150
+        (label :text wifi_ssid
+               :class "base")))))
+
+(defwidget battery []
+  (button :onclick `eww update bat-extended=${bat-extended ? "false" : "true"}`
+    (box :orientation "horizontal"
+         :class {"widget pill" + (bat-extended ? " extended" : "")}
+         :spacing {bat-extended ? 3 : 0}
+         :space-evenly false
+      (label :text {
+          (pbat_status == "Charging" || pbat_status == "Full") ?
+            ( (pbat_cap < 20) ? ""
+            : (pbat_cap < 50) ? ""
+            : (pbat_cap < 100) ? ""
+            : "" )
+        : (pbat_cap < 10) ? ""
+        : (pbat_cap < 20) ? ""
+        : (pbat_cap < 50) ? ""
+        : (pbat_cap < 80) ? ""
+        : ""}
+             :class "base pill-icon")
+      (revealer :transition "slideleft"
+                :reveal bat-extended
+                :duration 150
+        (label :text {pbat_cap + "%"}
+               :class "base")))))
+
+
+(defwidget time []
+  (button :onclick `eww update time-extended=${time-extended ? "false" : "true"}`
+    (box :orientation "horizontal"
+         :space-evenly false
+         :hexpand true
+         :class "widget time"
+      (time_extension :text petimea)
+      (label :text ptime
+             :class "base")
+      (time_extension :text petimeb))))
+

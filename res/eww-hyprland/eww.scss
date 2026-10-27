@@ -1,0 +1,91 @@
+$background: EWW_BACKGROUND;
+$accent: EWW_ACCENT;
+$foreground: EWW_TEXT;
+
+* {
+  all: unset;
+}
+
+window {
+    background: transparent;
+}
+
+.bar {
+    margin: 5px 20px 5px 20px;
+}
+
+.widget {
+    background: $background;
+    color: $foreground;
+    font-family: "Noto Sans";
+    font-weight: 600;
+    font-size: 15px;
+    padding: 5px 15px;
+    border-radius: 50px;
+    box-shadow: rgba($foreground, .7) 0px 0px 2px;
+}
+
+.title {
+    margin: 0 5px;
+}
+
+.pill {
+    margin-right: 5px;
+    padding: 5px 10px;
+}
+
+.extended {
+    padding: 5px 15px;
+}
+
+.time {
+    .base {
+        font-weight: 700;
+    }
+    .extension {
+        font-weight: 500;
+        color: rgba($foreground, .7);
+    }
+}
+
+.workspaces {
+    padding: 5px 10px;
+    font-size: 22px;
+
+    button {
+        padding: 0px 2px;
+    }
+
+    .empty, .occupied {
+        color: $accent;
+    }
+}
+
+.widget.line-workspaces {
+    color: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: 0;
+
+    button {
+        padding: 0 13px;
+    }
+
+    .empty {
+        background-color: $background;
+    }
+
+    .occupied {
+        background-color: $accent;
+    }
+
+    .focused {
+        background-color: $foreground;
+    }
+}
+
+.pill-icon {
+    color: $accent;
+    font-family: Material Symbols Outlined;
+    font-size: 18px;
+}

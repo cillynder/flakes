@@ -1,12 +1,16 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, sysConfig, ... }:
 let
   inherit (lib) boolToString defaultTo;
+  target = if sysConfig.programs.hyprland.enable == true
+    then ../../res/eww-hyprland
+    else ../../res/eww;
+
   res = pkgs.stdenvNoCC.mkDerivation {
     pname = "eww-wayland-config";
     version = "1.0.0";
     dontUnpack = true;
     installPhase = ''
-      cp -r ${../../res/eww} $out
+      cp -r ${target} $out
 
       substituteInPlace $out/eww.yuck \
         --replace-fail "_BAT_ENABLED_" "${boolToString (config.me.batteryDevice != null)}" \
