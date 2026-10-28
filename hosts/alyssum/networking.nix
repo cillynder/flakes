@@ -1,10 +1,9 @@
 { config, ... }: {
   networking = {
     useDHCP = true;
-    wireless.enable = true;
 
-    interfaces.wlp1s0.useDHCP = false;
-    interfaces.wlp1s0.ipv4.addresses = [{
+    interfaces.enp3s0f3u1.useDHCP = false;
+    interfaces.enp3s0f3u1.ipv4.addresses = [{
       address = "192.168.1.167";
       prefixLength = 24;
     }];
