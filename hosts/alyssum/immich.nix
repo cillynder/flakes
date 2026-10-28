@@ -9,6 +9,7 @@ in {
     settings.server.externalDomain = "https://${shareFqdn}";
   };
 
+  me.binds."/var/lib/postgresql" = "postgresql";
   me.binds."/var/lib/immich" = "/flower/immich";
   me.binds."/var/lib/immich/encoded-video" = "immich/encoded-video";
   me.binds."/var/lib/immich/profile" = "immich/profile";
