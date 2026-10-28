@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   system.stateVersion = "25.11";
   fileSystems."/var/lib/opencloud" = {
     device = "/flower/data";
@@ -23,6 +23,7 @@
   '';
   services.opencloud = {
     enable = true;
+    package = pkgs.opencloud;
     url = "https://cloud.lava.moe";
     address = "10.30.7.2";
     port = 9200;
