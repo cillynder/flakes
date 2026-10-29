@@ -28,6 +28,8 @@
       };
 
       services.nginx.virtualHosts."qtnet.work" = {
+        useACMEHost = "qtnet.work";
+        forceSSL = true;
         locations."= /.well-known/matrix/server".extraConfig =
           let
             server = { "m.server" = "${fqdn}:443"; };
