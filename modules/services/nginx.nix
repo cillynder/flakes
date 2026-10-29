@@ -6,6 +6,7 @@
       email = "me@lava.moe";
       group = "nginx";
       dnsProvider = "cloudflare";
+      dnsResolver = "1.1.1.1:53";
       environmentFile = config.age.secrets."acme_dns".path;
     };
     certs."lava.moe" = {
