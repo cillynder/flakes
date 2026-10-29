@@ -22,7 +22,13 @@
         useACMEHost = "qtnet.work";
         forceSSL = true;
         locations."/".extraConfig = "return 302 'https://qtnet.work';";
-        locations."/_matrix".proxyPass = "http://10.30.${subnet}.2:6167";
+        locations."/.well-known/matrix".proxyPass = "http://10.30.${subnet}.2:6167";
+        locations."/_matrix" = {
+          proxyPass = "http://10.30.${subnet}.2:6167";
+          extraConfig = ''
+            client_max_body_size 100M;
+          '';
+        };
         locations."/_conduwuit".proxyPass = "http://10.30.${subnet}.2:6167";
         locations."/_continuwuity".proxyPass = "http://10.30.${subnet}.2:6167";
       };
