@@ -9,7 +9,8 @@
   networking.firewall.allowedUDPPorts = [ 6167 ];
   # TODO: this should be generically set
   networking.useHostResolvConf = false;
-  networking.nameservers = [ "8.8.8.8" ];
+  # TODO: link this with outer container's address
+  networking.nameservers = [ "10.30.2.1" ];
 
   services.matrix-continuwuity = {
     enable = true;
