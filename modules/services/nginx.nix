@@ -17,6 +17,7 @@
     };
     certs."cilly.moe" = {};
     certs."cilly.dev" = {};
+    certs."qtnet.work" = {};
   };
 
   services.nginx = {
