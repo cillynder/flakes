@@ -9,7 +9,7 @@
     nixosModule = { ... }:
     let
       name = "beryllium";
-      fqdn = "beryllium.lava.moe";
+      fqdn = "beryllium.qtnet.work";
       subnet = "2";
     in {
       networking.nat = {
@@ -19,15 +19,15 @@
       };
 
       services.nginx.virtualHosts."${fqdn}" = {
-        useACMEHost = "lava.moe";
+        useACMEHost = "qtnet.work";
         forceSSL = true;
-        locations."/".extraConfig = "return 302 'https://lava.moe';";
+        locations."/".extraConfig = "return 302 'https://qtnet.work';";
         locations."/_matrix".proxyPass = "http://10.30.${subnet}.2:6167";
         locations."/_conduwuit".proxyPass = "http://10.30.${subnet}.2:6167";
         locations."/_continuwuity".proxyPass = "http://10.30.${subnet}.2:6167";
       };
 
-      services.nginx.virtualHosts."lava.moe" = {
+      services.nginx.virtualHosts."qtnet.work" = {
         locations."= /.well-known/matrix/server".extraConfig =
           let
             server = { "m.server" = "${fqdn}:443"; };

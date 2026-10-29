@@ -16,8 +16,7 @@
     settings.global = {
       # TODO: link this with outer container's address
       address = [ "10.30.2.2" ];
-      server_name = "lava.moe";
-      rocksdb_recovery_mode = 2;
+      server_name = "qtnet.work";
     };
   };
 }
