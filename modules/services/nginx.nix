@@ -17,7 +17,11 @@
     };
     certs."cilly.moe" = {};
     certs."cilly.dev" = {};
-    certs."qtnet.work" = {};
+    certs."qtnet.work" = {
+      extraDomainNames = [
+        "*.qtnet.work"
+      ];
+    };
   };
 
   services.nginx = {
