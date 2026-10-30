@@ -3,12 +3,12 @@
     "h /persist/incus_volumes - - - - +C"
   ];
   networking = {
-    useNetworkd = true;
     nftables.enable = true;
+    firewall.trustedInterfaces = [ "incusbr0" ];
+    interfaces.br0.useDHCP = true;
 
     # TODO: hardcoded
     bridges.brincus0.interfaces = [ "enp3s0f3u1" ];
-    interfaces.br0.useDHCP = true;
   };
   virtualisation = {
     incus = {
@@ -51,15 +51,6 @@
             };
           }
         ];
-      };
-    };
-
-    libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMF ];
       };
     };
   };
