@@ -18,6 +18,7 @@
       # TODO: link this with outer container's address
       address = [ "10.30.2.2" ];
       server_name = "qtnet.work";
+      allow_registration = true;
     };
   };
 }
