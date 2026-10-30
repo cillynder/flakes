@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  tmpfiles.d = [
+  systemd.tmpfiles.rules = [
     "h /persist/incus_volumes - - - - +C"
   ];
   networking = {
