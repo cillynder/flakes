@@ -4,7 +4,10 @@ let
     me.binds."/home/${user}/.config/syncthing" = "${user}/syncthing/config";
     me.binds."/home/${user}/.local/state/syncthing" = "${user}/syncthing/state";
 
-    systemd.tmpfiles.rules = [ "d /flower/syncthing/${user} 700 ${user} users" ];
+    systemd.tmpfiles.rules = [
+      "d /flower/syncthing/${user} 700 ${user} users"
+      "d /home/${user}/.local/state/nix/profiles 700 ${user} users"
+    ];
 
     users.users.${user} = {
       hashedPasswordFile = config.age.secrets.passwd.path;
