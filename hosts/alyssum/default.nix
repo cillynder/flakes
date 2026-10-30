@@ -34,6 +34,7 @@
 
     ./filesystem.nix
     ./kernel.nix
+    ./haos.nix
     ./home.syncthing.nix
     ./immich.nix
     ./networking.nix
