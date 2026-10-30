@@ -10,6 +10,11 @@
 
     # TODO: hardcoded
     bridges.br0.interfaces = [ "enp3s0f3u1" ];
+
+    dhcpcd.extraConfig = ''
+      interface br0
+      metric 500
+    '';
   };
   virtualisation = {
     incus = {
