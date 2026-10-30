@@ -9,6 +9,8 @@
       prefixLength = 24;
     }];
 
+    interfaces.enp3s0f3u1.useDHCP = true;
+
     defaultGateway = "192.168.1.1";
     nameservers = [ "8.8.8.8" "8.8.4.4" ];
 
