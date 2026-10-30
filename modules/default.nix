@@ -44,6 +44,7 @@ in {
     ./system/greetd-hyprland.nix
     ./system/gui.nix
     ./system/home-manager.nix
+    ./system/incus.nix
     ./system/input.nix
     ./system/kernel.nix
     ./system/nix.nix

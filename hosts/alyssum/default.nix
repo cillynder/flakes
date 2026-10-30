@@ -20,6 +20,7 @@
 
     base
     kernel
+    incus
     nix-stable
     packages
     security

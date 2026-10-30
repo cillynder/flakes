@@ -29,6 +29,7 @@ in {
     "/flower" = mkBtrfsMount "myosotis" "/@" true;
     "/nix" = submount "/@/nix" false;
     "/persist" = (submount "/@/persist" true) // { neededForBoot = true; };
+    "/persist/incus_volumes" = submount "/@/incus" false;
     "/persist/.snapshots" = submount "/snap/persist" false;
     "/var/log/journal" = bind "/persist/journal";
   };
