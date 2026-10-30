@@ -8,7 +8,7 @@
     interfaces.br0.useDHCP = true;
 
     # TODO: hardcoded
-    bridges.brincus0.interfaces = [ "enp3s0f3u1" ];
+    bridges.br0.interfaces = [ "enp3s0f3u1" ];
   };
   virtualisation = {
     incus = {
