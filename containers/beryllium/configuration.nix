@@ -19,6 +19,8 @@
       address = [ "10.30.2.2" ];
       server_name = "qtnet.work";
       allow_registration = true;
+      url_preview_domain_explicit_allowlist = "*";
+      url_preview_allow_audio_video = true;
     };
   };
 }
