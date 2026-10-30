@@ -5,6 +5,7 @@
   networking = {
     nftables.enable = true;
     firewall.trustedInterfaces = [ "incusbr0" ];
+    interfaces.enp3s0f3u1.useDHCP = false;
     interfaces.br0.useDHCP = true;
 
     # TODO: hardcoded
