@@ -17,6 +17,7 @@
     settings.global = {
       # TODO: link this with outer container's address
       address = [ "10.30.2.2" ];
+      max_request_size = 500 * 1024 * 1024;
       server_name = "qtnet.work";
       allow_registration = true;
       url_preview_domain_explicit_allowlist = [ "*" ];

@@ -26,7 +26,7 @@
         locations."/_matrix" = {
           proxyPass = "http://10.30.${subnet}.2:6167";
           extraConfig = ''
-            client_max_body_size 100M;
+            client_max_body_size 500M;
           '';
         };
         locations."/_conduwuit".proxyPass = "http://10.30.${subnet}.2:6167";
