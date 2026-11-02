@@ -35,15 +35,15 @@
         useACMEHost = "qtnet.work";
         forceSSL = true;
         locations."/".extraConfig = "return 302 'https://qtnet.work';";
-        locations."/.well-known/matrix".proxyPass = "http://${clientIp}:${ports.continuwuity}";
+        locations."/.well-known/matrix".proxyPass = "http://${clientIp}:${toString ports.continuwuity}";
         locations."/_matrix" = {
-          proxyPass = "http://${clientIp}:${ports.continuwuity}";
+          proxyPass = "http://${clientIp}:${toString ports.continuwuity}";
           extraConfig = ''
             client_max_body_size 500M;
           '';
         };
-        locations."/_conduwuit".proxyPass = "http://${clientIp}:${ports.continuwuity}";
-        locations."/_continuwuity".proxyPass = "http://${clientIp}:${ports.continuwuity}";
+        locations."/_conduwuit".proxyPass = "http://${clientIp}:${toString ports.continuwuity}";
+        locations."/_continuwuity".proxyPass = "http://${clientIp}:${toString ports.continuwuity}";
       };
 
       services.nginx.virtualHosts."${serverName}" = {
