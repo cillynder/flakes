@@ -20,7 +20,7 @@ in {
     settings.global = {
       # TODO: link this with outer container's address
       address = [ "10.30.2.2" ];
-      port = ports.continuwuity;
+      port = [ ports.continuwuity ];
       max_request_size = 500 * 1024 * 1024;
       server_name = "qtnet.work";
       allow_registration = true;
