@@ -30,6 +30,10 @@
         enableIPv6 = true;
         internalInterfaces = [ "ve-${name}" ];
       };
+      networking.firewall = {
+        allowedTCPPorts = [ ports.livekitRtc ];
+        allowedUDPPortRanges = [ { from = ports.livekitStart; to = ports.livekitEnd; } ];
+      };
 
       services.nginx.virtualHosts."${fqdn}" = {
         useACMEHost = "qtnet.work";

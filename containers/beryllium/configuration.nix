@@ -8,8 +8,7 @@ in {
     fsType = "none";
     options = [ "bind" ];
   };
-  networking.firewall.allowedTCPPorts = [ ports.continuwuity ports.livekitRtc ];
-  networking.firewall.allowedUDPPorts = [ ports.continuwuity ports.livekitRtc ];
+  networking.firewall.allowedTCPPorts = [ ports.continuwuity ports.livekitRtc ports.livekitJwt ports.livekit ];
   # TODO: this should be generically set
   networking.useHostResolvConf = false;
   # TODO: link this with outer container's address
