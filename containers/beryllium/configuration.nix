@@ -55,7 +55,7 @@ in {
   };
   services.lk-jwt-service = {
     enable = true;
-    livekitUrl = "wss://livekit.qtnet.work/sfu";
+    livekitUrl = "wss://livekit.qtnet.work";
     port = ports.livekitJwt;
     inherit keyFile;
   };
