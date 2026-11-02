@@ -10,7 +10,20 @@
     let
       name = "beryllium";
       fqdn = "beryllium.qtnet.work";
+      livekitFqdn = "livekit.qtnet.work";
+      serverName = "qtnet.work";
       subnet = "2";
+
+      clientIp = "10.30.${subnet}.2";
+
+      ports = {
+        continuwuity = 6167;
+        livekit = 7880;
+        livekitJwt = 7881;
+        livekitRtc = 7882;
+        livekitStart = 50067;
+        livekitEnd = 50167;
+      };
     in {
       networking.nat = {
         enable = true;
@@ -22,18 +35,18 @@
         useACMEHost = "qtnet.work";
         forceSSL = true;
         locations."/".extraConfig = "return 302 'https://qtnet.work';";
-        locations."/.well-known/matrix".proxyPass = "http://10.30.${subnet}.2:6167";
+        locations."/.well-known/matrix".proxyPass = "http://${clientIp}:${ports.continuwuity}";
         locations."/_matrix" = {
-          proxyPass = "http://10.30.${subnet}.2:6167";
+          proxyPass = "http://${clientIp}:${ports.continuwuity}";
           extraConfig = ''
             client_max_body_size 500M;
           '';
         };
-        locations."/_conduwuit".proxyPass = "http://10.30.${subnet}.2:6167";
-        locations."/_continuwuity".proxyPass = "http://10.30.${subnet}.2:6167";
+        locations."/_conduwuit".proxyPass = "http://${clientIp}:${ports.continuwuity}";
+        locations."/_continuwuity".proxyPass = "http://${clientIp}:${ports.continuwuity}";
       };
 
-      services.nginx.virtualHosts."qtnet.work" = {
+      services.nginx.virtualHosts."${serverName}" = {
         useACMEHost = "qtnet.work";
         forceSSL = true;
         locations."= /.well-known/matrix/server".extraConfig =
@@ -56,15 +69,31 @@
           '';
       };
 
+      services.nginx.virtualHosts."${livekitFqdn}" = {
+        useACMEHost = "qtnet.work";
+        forceSSL = true;
+        locations."~ ^/(sfu/get|healthz|get_token)" = {
+          extraConfig = ''
+            proxy_buffering off;
+          '';
+          proxyPass = "http://${clientIp}:${toString ports.livekitJwt}";
+        };
+        locations."/" = {
+          proxyPass = "http://${clientIp}:${toString ports.livekit}";
+          proxyWebsockets = true;
+        };
+      };
+
       systemd.tmpfiles.rules = [ "d /persist/containers/${name} 755 root users" ];
       containers.${name} = {
         autoStart = true;
         privateNetwork = true;
         hostAddress = "10.30.${subnet}.1";
-        localAddress = "10.30.${subnet}.2";
+        localAddress = clientIp;
         nixpkgs = nixpkgs;
         ephemeral = true;
         config = { imports = [ ./configuration.nix ]; };
+        specialArgs = { inherit ports; };
 
         bindMounts."persist" = {
           hostPath = "/persist/containers/${name}";
