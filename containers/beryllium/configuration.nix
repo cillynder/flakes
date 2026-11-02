@@ -56,6 +56,7 @@ in {
   services.lk-jwt-service = {
     enable = true;
     livekitUrl = "wss://livekit.qtnet.work/livekit/sfu";
+    port = ports.livekitJwt;
     inherit keyFile;
   };
   systemd.services.lk-jwt-service.environment.LIVEKIT_FULL_ACCESS_HOMESERVERS = "qtnet.work";
