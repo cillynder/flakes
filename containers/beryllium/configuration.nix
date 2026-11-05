@@ -14,6 +14,7 @@ in {
     options = [ "bind" ];
   };
   networking.firewall.allowedTCPPorts = with ports; [ continuwuity livekitRtc livekitJwt livekit mautrixDiscord ];
+  networking.firewall.allowedUDPPortRanges = with ports; [ { from = livekitStart; to = livekitEnd; } ];
   # TODO: this should be generically set
   networking.useHostResolvConf = false;
   # TODO: link this with outer container's address
