@@ -15,6 +15,7 @@
     forceSSL = true;
     locations."/" = {
       proxyPass = "https://controlplane.tailscale.com";
+      proxyWebsockets = true;
       extraConfig = ''
         proxy_set_header Host $proxy_host;
         sub_filter 'https://controlplane.tailscale.com' 'https://tscpp.lava.moe';
