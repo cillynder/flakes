@@ -76,6 +76,9 @@ in {
   };
 
   # mautrix-discord
+  nixpkgs.config.permittedInsecurePackages = [
+    "olm-3.2.16"
+  ];
   services.mautrix-discord = {
     enable = true;
     dataDir = mautrixDataDir;
