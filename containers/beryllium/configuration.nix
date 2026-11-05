@@ -1,6 +1,7 @@
 { config, pkgs, ports, ... }:
 let
   keyFile = "/run/livekit.key";
+  mautrixDataDir = "/persist/mautrix-discord";
 in {
   system.stateVersion = "25.11";
   fileSystems."/var/lib/private" = {
@@ -72,5 +73,38 @@ in {
     '';
     serviceConfig.Type = "oneshot";
     unitConfig.ConditionPathExists = "!${keyFile}";
+  };
+
+  # mautrix-discord
+  services.mautrix-discord = {
+    enable = true;
+    dataDir = mautrixDataDir;
+    environmentFile = "/binds/mautrix_discord_env";
+    settings = {
+      homeserver = {
+        address = "https://beryllium.qtnet.work";
+        domain = "qtnet.work";
+      };
+      bridge.direct_media = {
+        enabled = true;
+        serverName = "md-proxy.qtnet.work";
+        serverKey = "$MD_DM_KEY";
+      };
+      bridge.permissions = {
+        "qtnet.work" = "user";
+        "@cilly:qtnet.work" = "admin";
+      };
+      appservice = {
+        address = "http://localhost:${toString ports.mautrixDiscord}";
+        hostname = "0.0.0.0";
+        port = ports.mautrixDiscord;
+
+        database.uri = "file:${mautrixDataDir}/mautrix-discord.db?_txlock=immediate";
+      };
+    };
+  };
+  systemd.services.mautrix-discord = {
+    wants = [ "network-online.target" "continuwuity.service" ];
+    after = [ "network-online.target" "continuwuity.service" ];
   };
 }

@@ -6,11 +6,12 @@
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
       modules = [ ./configuration.nix ];
     };
-    nixosModule = { ... }:
+    nixosModule = { config, ... }:
     let
       name = "beryllium";
       fqdn = "beryllium.qtnet.work";
       livekitFqdn = "livekit.qtnet.work";
+      mautrixProxyFqdn = "md-proxy.qtnet.work";
       serverName = "qtnet.work";
       subnet = "2";
 
@@ -23,8 +24,12 @@
         livekitRtc = 7882;
         livekitStart = 50067;
         livekitEnd = 50167;
+
+        mautrixDiscord = 29334;
       };
     in {
+      age.secrets.mautrix_discord_env.file = ../../secrets/mautrix_discord_env.age;
+
       networking.nat = {
         enable = true;
         enableIPv6 = true;
@@ -88,6 +93,15 @@
         };
       };
 
+      services.nginx.virtualHosts."${mautrixProxyFqdn}" = {
+        useACMEHost = "qtnet.work";
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://${clientIp}:${toString ports.mautrixDiscord}";
+          proxyWebsockets = true;
+        };
+      };
+
       systemd.tmpfiles.rules = [ "d /persist/containers/${name} 755 root users" ];
       containers.${name} = {
         autoStart = true;
@@ -103,6 +117,12 @@
           hostPath = "/persist/containers/${name}";
           mountPoint = "/persist";
           isReadOnly = false;
+        };
+
+        bindMounts."mautrix_discord_env" = {
+          hostPath = config.age.secrets.mautrix_discord_env.path;
+          mountPoint = "/binds/mautrix_discord_env";
+          isReadOnly = true;
         };
       };
     };

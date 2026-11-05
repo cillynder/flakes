@@ -17,6 +17,7 @@ in {
   "secrets/restic_url.age".publicKeys = [ alyssum dandelion rin ];
 
   "secrets/acme_dns.age".publicKeys = [ alyssum dandelion hazel rin ];
+  "secrets/mautrix_discord_env.age".publicKeys = [ dandelion rin ];
   "secrets/navidrome_env.age".publicKeys = [ alyssum dandelion rin ];
   "secrets/searx_env.age".publicKeys = [ alyssum dandelion rin ];
   "secrets/slskd_env.age".publicKeys = [ anemone dandelion rin ];
