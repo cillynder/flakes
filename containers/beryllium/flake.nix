@@ -36,7 +36,7 @@
         internalInterfaces = [ "ve-${name}" ];
       };
       networking.firewall = {
-        allowedTCPPorts = [ ports.livekitRtc ];
+        allowedTCPPorts = [ ports.livekitRtc ports.mautrixDiscord ];
         allowedUDPPortRanges = [ { from = ports.livekitStart; to = ports.livekitEnd; } ];
       };
 
