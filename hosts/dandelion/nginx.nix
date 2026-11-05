@@ -14,10 +14,10 @@
     useACMEHost = "lava.moe";
     forceSSL = true;
     locations."/" = {
-      proxyPass = "https://controlplane.tailscale.com";
       proxyWebsockets = true;
       extraConfig = ''
-        proxy_set_header Host $proxy_host;
+        proxy_pass 'https://controlplane.tailscale.com;
+        proxy_set_header Host 'controlplane.tailscale.com';
         sub_filter 'https://controlplane.tailscale.com' 'https://tscpp.lava.moe';
         sub_filter_once off;
       '';
@@ -27,10 +27,10 @@
     useACMEHost = "lava.moe";
     forceSSL = true;
     locations."/" = {
-      proxyPass = "https://http-me.glitch.me/anything";
       proxyWebsockets = true;
       extraConfig = ''
-        proxy_set_header Host $proxy_host;
+        proxy_pass 'https://http-me.glitch.me/anything';
+        proxy_set_header Host 'http-me.glitch.me';
         sub_filter 'https://controlplane.tailscale.com' 'https://tscpp.lava.moe';
         sub_filter_once off;
       '';
