@@ -1,7 +1,6 @@
 { config, pkgs, ports, ... }:
 let
   keyFile = "/run/livekit.key";
-  mautrixDataDir = "/persist/mautrix-discord";
 in {
   system.stateVersion = "25.11";
   fileSystems."/var/lib/private" = {
@@ -14,7 +13,7 @@ in {
     fsType = "none";
     options = [ "bind" ];
   };
-  networking.firewall.allowedTCPPorts = [ ports.continuwuity ports.livekitRtc ports.livekitJwt ports.livekit ];
+  networking.firewall.allowedTCPPorts = with ports; [ continuwuity livekitRtc livekitJwt livekit mautrixDiscord ];
   # TODO: this should be generically set
   networking.useHostResolvConf = false;
   # TODO: link this with outer container's address
