@@ -9,6 +9,11 @@ in {
     fsType = "none";
     options = [ "bind" ];
   };
+  fileSystems."${config.services.mautrix-discord.dataDir}" = {
+    device = "/persist/mautrix-discord";
+    fsType = "none";
+    options = [ "bind" ];
+  };
   networking.firewall.allowedTCPPorts = [ ports.continuwuity ports.livekitRtc ports.livekitJwt ports.livekit ];
   # TODO: this should be generically set
   networking.useHostResolvConf = false;
@@ -81,7 +86,6 @@ in {
   ];
   services.mautrix-discord = {
     enable = true;
-    dataDir = mautrixDataDir;
     environmentFile = "/binds/mautrix_discord_env";
     settings = {
       homeserver = {
@@ -101,8 +105,6 @@ in {
         address = "http://localhost:${toString ports.mautrixDiscord}";
         hostname = "0.0.0.0";
         port = ports.mautrixDiscord;
-
-        database.uri = "file:${mautrixDataDir}/mautrix-discord.db?_txlock=immediate";
       };
     };
   };
