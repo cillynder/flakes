@@ -94,8 +94,8 @@ in {
       };
       bridge.direct_media = {
         enabled = true;
-        serverName = "md-proxy.qtnet.work";
-        serverKey = "$MD_DM_KEY";
+        server_name = "md-proxy.qtnet.work";
+        server_key = "$MD_DM_KEY";
       };
       bridge.permissions = {
         "qtnet.work" = "user";
