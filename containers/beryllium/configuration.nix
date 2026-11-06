@@ -29,6 +29,8 @@ in {
       max_request_size = 500 * 1024 * 1024;
       server_name = "qtnet.work";
       allow_registration = true;
+      allow_outgoing_presence = true;
+      allow_sticky_events = true;
       url_preview_domain_explicit_allowlist = [ "*" ];
       url_preview_allow_audio_video = true;
 
