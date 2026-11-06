@@ -92,14 +92,28 @@ in {
         address = "https://beryllium.qtnet.work";
         domain = "qtnet.work";
       };
-      bridge.direct_media = {
-        enabled = true;
-        server_name = "md-proxy.qtnet.work";
-        server_key = "$MD_DM_KEY";
-      };
-      bridge.permissions = {
-        "qtnet.work" = "user";
-        "@cilly:qtnet.work" = "admin";
+      bridge = {
+        backfill.forward_limits = {
+          initial = {
+            dm = 1000;
+            channel = 500;
+            thread = 500;
+          };
+          missed = {
+            dm = -1;
+            channel = -1;
+            thread = -1;
+          };
+        };
+        direct_media = {
+          enabled = true;
+          server_name = "md-proxy.qtnet.work";
+          server_key = "$MD_DM_KEY";
+        };
+        permissions = {
+          "qtnet.work" = "user";
+          "@cilly:qtnet.work" = "admin";
+        };
       };
       appservice = {
         address = "http://localhost:${toString ports.mautrixDiscord}";
