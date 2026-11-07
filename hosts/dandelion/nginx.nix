@@ -3,7 +3,7 @@
     useACMEHost = "lava.moe";
     forceSSL = true;
     locations."/".return = "404";
-    locations."/share/".proxyPass = "http://[fd0d:2::5:2]:4533";
+    locations."/share/".proxyPass = "https://navia.lava.moe";
   };
   services.nginx.virtualHosts."public-meadow.lava.moe" = {
     useACMEHost = "lava.moe";
