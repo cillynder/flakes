@@ -10,6 +10,7 @@
     enable = true;
     environmentFile = "/binds/navidrome_env";
     settings = {
+      "Plugins.Enabled" = false;
       Port = 4533;
       Address = "[::]";
       BaseUrl = "https://${fqdn}/";
