@@ -1,8 +1,8 @@
 { fetchFromGitHub, inputs, lib }:
 let
-  version = "7.3";
+  version = "7.3.5";
   kernelHash = "0ls902gz6h1ydcnwx2zzdcglg52f14hmaxk2ncg341hfy4j3qdl7";
-  kernelPatchHash = "1p3ppcd75q2vqjijq9a8krzzbaa8mqpdc24ys18mdqxnfwif748r";
+  kernelPatchHash = "1x0m1yg0386088vn2kjbqdb2fr4zsjz50dhj1y28fw288phx9q74";
 
   mm = lib.versions.majorMinor version;
   hasPatch = (builtins.length (builtins.splitVersion version)) == 3;
