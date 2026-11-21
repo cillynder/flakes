@@ -1,4 +1,5 @@
 self: super: let
+  # TODO: bump this
   llvmPackages = super.llvmPackages_19;
   clangVersion = super.lib.versions.major llvmPackages.libclang.version;
   addFlagsScript = "$out/nix-support/add-local-cc-cflags-before.sh";
@@ -20,7 +21,13 @@ in {
   linuxLavaEnv = {
     inherit llvmPackages clangVersion cc stdenv ccacheStdenv;
   };
-  rust-bindgen-unwrapped = super.rust-bindgen-unwrapped.override {
-    clang = cc;
-  };
+  rust-bindgen-unwrapped = super.rust-bindgen-unwrapped.overrideAttrs(o: {
+    preConfigure = ''
+      export LIBCLANG_PATH="${super.lib.getLib cc.cc}/lib"
+    '';
+    nativeCheckInputs = [ cc ];
+    passthru = {
+      clang = cc;
+    };
+  });
 }
