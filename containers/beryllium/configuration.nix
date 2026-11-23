@@ -1,4 +1,4 @@
-{ config, pkgs, fqdns, ports, ... }:
+{ config, inputs, pkgs, fqdns, ports, ... }:
 let
   keyFile = "/run/livekit.key";
 in {
@@ -22,6 +22,7 @@ in {
 
   services.matrix-continuwuity = {
     enable = true;
+    package = inputs.continuwuity.packages.${pkgs.stdenv.hostPlatform.system}.default;
     settings.global = {
       # TODO: link this with outer container's address
       address = [ "10.30.2.2" ];

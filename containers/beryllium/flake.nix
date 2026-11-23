@@ -1,8 +1,9 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    continuwuity.url = "git+https://forgejo.ellis.link/continuwuation/continuwuity";
   };
-  outputs = { nixpkgs, ... }: {
+  outputs = { nixpkgs, ... } @ inputs: {
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
       modules = [ ./configuration.nix ];
     };
@@ -97,7 +98,7 @@
         nixpkgs = nixpkgs;
         ephemeral = true;
         config = { imports = [ ./configuration.nix ]; };
-        specialArgs = { inherit fqdns ports; };
+        specialArgs = { inherit fqdns inputs ports; };
 
         bindMounts."persist" = {
           hostPath = "/persist/containers/${name}";
