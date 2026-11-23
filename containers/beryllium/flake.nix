@@ -9,10 +9,12 @@
     nixosModule = { config, ... }:
     let
       name = "beryllium";
-      fqdn = "beryllium.qtnet.work";
-      livekitFqdn = "livekit.qtnet.work";
-      mautrixProxyFqdn = "md-proxy.qtnet.work";
-      serverName = "qtnet.work";
+      fqdns = {
+        name = "qtnet.work";
+        server = "beryllium.qtnet.work";
+        livekit = "livekit.qtnet.work";
+        mautrixProxy = "md-proxy.qtnet.work";
+      };
       subnet = "2";
 
       clientIp = "10.30.${subnet}.2";
@@ -40,7 +42,7 @@
         allowedUDPPortRanges = [ { from = ports.livekitStart; to = ports.livekitEnd; } ];
       };
 
-      services.nginx.virtualHosts."${fqdn}" = {
+      services.nginx.virtualHosts."${fqdns.server}" = {
         useACMEHost = "qtnet.work";
         forceSSL = true;
         locations."/".extraConfig = "return 302 'https://qtnet.work';";
@@ -55,30 +57,14 @@
         locations."/_continuwuity".proxyPass = "http://${clientIp}:${toString ports.continuwuity}";
       };
 
-      services.nginx.virtualHosts."${serverName}" = {
+      services.nginx.virtualHosts."${fqdns.name}" = {
         useACMEHost = "qtnet.work";
         forceSSL = true;
-        locations."= /.well-known/matrix/server".extraConfig =
-          let
-            server = { "m.server" = "${fqdn}:443"; };
-          in ''
-            add_header Content-Type application/json;
-            return 200 '${builtins.toJSON server}';
-          '';
-        locations."= /.well-known/matrix/client".extraConfig =
-          let
-            client = {
-              "m.homeserver" = { "base_url" = "https://${fqdn}"; };
-              # "m.identity_server" = { "base_url" = "https://vector.im"; };
-            };
-          in ''
-            add_header Content-Type application/json;
-            add_header Access-Control-Allow-Origin *;
-            return 200 '${builtins.toJSON client}';
-          '';
+        locations."/_continuwuity".proxyPass = "http://${clientIp}:${toString ports.continuwuity}";
+        locations."/.well-known/matrix".proxyPass = "http://${clientIp}:${toString ports.continuwuity}";
       };
 
-      services.nginx.virtualHosts."${livekitFqdn}" = {
+      services.nginx.virtualHosts."${fqdns.livekit}" = {
         useACMEHost = "qtnet.work";
         forceSSL = true;
         locations."~ ^/(sfu/get|healthz|get_token)" = {
@@ -93,7 +79,7 @@
         };
       };
 
-      services.nginx.virtualHosts."${mautrixProxyFqdn}" = {
+      services.nginx.virtualHosts."${fqdns.maurixProxy}" = {
         useACMEHost = "qtnet.work";
         forceSSL = true;
         locations."/" = {
@@ -111,7 +97,7 @@
         nixpkgs = nixpkgs;
         ephemeral = true;
         config = { imports = [ ./configuration.nix ]; };
-        specialArgs = { inherit ports; };
+        specialArgs = { inherit fqdns ports; };
 
         bindMounts."persist" = {
           hostPath = "/persist/containers/${name}";

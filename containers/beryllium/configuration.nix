@@ -1,4 +1,4 @@
-{ config, pkgs, ports, ... }:
+{ config, pkgs, fqdns, ports, ... }:
 let
   keyFile = "/run/livekit.key";
 in {
@@ -34,11 +34,22 @@ in {
       url_preview_domain_explicit_allowlist = [ "*" ];
       url_preview_allow_audio_video = true;
 
+      well_known = {
+        client = "https://${fqdns.server}";
+        server = "${fqdns.server}:443";
+        support_email = "qtnet@lava.moe";
+        support_pgp_key = "openpgp4fpr:059F098EBF0E9A13E10A46BF6500251E087653C9";
+      };
+
       matrix_rtc = {
         foci = [{
           type = "livekit";
-          livekit_service_url = "https://livekit.qtnet.work";
+          livekit_service_url = "https://${fqdns.livekit}";
         }];
+      };
+
+      experiments = {
+        msc4174 = true;
       };
     };
   };
@@ -63,7 +74,7 @@ in {
   };
   services.lk-jwt-service = {
     enable = true;
-    livekitUrl = "wss://livekit.qtnet.work";
+    livekitUrl = "wss://${fqdns.livekit}";
     port = ports.livekitJwt;
     inherit keyFile;
   };
@@ -91,7 +102,7 @@ in {
     environmentFile = "/binds/mautrix_discord_env";
     settings = {
       homeserver = {
-        address = "https://beryllium.qtnet.work";
+        address = "https://${fqdns.server}";
         domain = "qtnet.work";
       };
       bridge = {
