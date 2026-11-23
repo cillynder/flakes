@@ -39,4 +39,4 @@ jobs:
         with:
           name: lava
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - run: nix build -L .#continuwuity
+      - run: nix build -L ./containers/beryllium#continuwuity
