@@ -4,6 +4,8 @@
     continuwuity.url = "git+https://forgejo.ellis.link/continuwuation/continuwuity";
   };
   outputs = { nixpkgs, ... } @ inputs: {
+    packages."aarch64-linux".continuwuity = inputs.continuwuity.packages.aarch64-linux.default;
+
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
       modules = [ ./configuration.nix ];
     };
