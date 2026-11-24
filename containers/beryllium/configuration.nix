@@ -32,6 +32,7 @@ in {
       allow_registration = true;
       allow_outgoing_presence = true;
       allow_sticky_events = true;
+      auto_join_rooms = [ "#announce:${fqdns.name}" ];
       url_preview_domain_explicit_allowlist = [ "*" ];
       url_preview_allow_audio_video = true;
 
