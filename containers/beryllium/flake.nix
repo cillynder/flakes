@@ -82,7 +82,7 @@
         };
       };
 
-      services.nginx.virtualHosts."${fqdns.maurixProxy}" = {
+      services.nginx.virtualHosts."${fqdns.mautrixProxy}" = {
         useACMEHost = "qtnet.work";
         forceSSL = true;
         locations."/" = {
